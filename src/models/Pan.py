@@ -525,8 +525,8 @@ class Pan(object):
 		self.page.find_all('font', color='#009999')[6].decompose()
 		map(bs4.Tag.decompose, self.page.find_all('font', color='#0080ff'))
 
-		out = open('centerGongCleared.html', 'w')
-		out.write(str(self.page))
+		# out = open('centerGongCleared.html', 'w')
+		# out.write(str(self.page))
 
 
 	def setCenterGong(self):
