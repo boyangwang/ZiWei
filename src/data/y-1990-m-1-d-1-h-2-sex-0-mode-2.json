@@ -1,0 +1,553 @@
+{
+    "twelveGongs": [
+        {
+            "redStars": [
+                [
+                    6, 
+                    "陷", 
+                    ""
+                ], 
+                [
+                    9, 
+                    "陷", 
+                    "权"
+                ]
+            ], 
+            "cyanStars": [
+                75
+            ], 
+            "magentaStars": [
+                [
+                    16, 
+                    "庙", 
+                    "忌"
+                ], 
+                [
+                    22, 
+                    "陷", 
+                    ""
+                ], 
+                [
+                    28, 
+                    "平", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    44, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                89, 
+                85
+            ], 
+            "ageRange": "36－45", 
+            "yearInLunar": "己巳", 
+            "gongName": "田宅宫", 
+            "stage": "临官"
+        }, 
+        {
+            "redStars": [
+                [
+                    10, 
+                    "旺", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                64
+            ], 
+            "magentaStars": [
+                [
+                    27, 
+                    "庙", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    40, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                90, 
+                86
+            ], 
+            "yearInLunar": "庚午", 
+            "ageRange": "46－55", 
+            "star": true, 
+            "gongName": "官禄", 
+            "stage": "帝旺"
+        }, 
+        {
+            "redStars": [
+                [
+                    11, 
+                    "得", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                65
+            ], 
+            "magentaStars": [
+                [
+                    21, 
+                    "庙", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    38, 
+                    "", 
+                    ""
+                ], 
+                [
+                    49, 
+                    "", 
+                    ""
+                ], 
+                [
+                    55, 
+                    "", 
+                    ""
+                ], 
+                [
+                    56, 
+                    "", 
+                    ""
+                ], 
+                [
+                    57, 
+                    "", 
+                    ""
+                ], 
+                [
+                    58, 
+                    "", 
+                    ""
+                ], 
+                [
+                    64, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                91, 
+                87
+            ], 
+            "ageRange": "56－65", 
+            "yearInLunar": "辛未", 
+            "gongName": "仆役宫", 
+            "stage": "　衰"
+        }, 
+        {
+            "redStars": [
+                [
+                    5, 
+                    "旺", 
+                    ""
+                ], 
+                [
+                    12, 
+                    "陷", 
+                    "科"
+                ]
+            ], 
+            "cyanStars": [
+                66
+            ], 
+            "magentaStars": [
+                [
+                    20, 
+                    "庙", 
+                    ""
+                ], 
+                [
+                    32, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    34, 
+                    "", 
+                    ""
+                ], 
+                [
+                    47, 
+                    "", 
+                    ""
+                ], 
+                [
+                    60, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                92, 
+                88
+            ], 
+            "yearInLunar": "壬申", 
+            "ageRange": "66－75", 
+            "star": true, 
+            "gongName": "迁移", 
+            "stage": "　病"
+        }, 
+        {
+            "redStars": [
+                [
+                    8, 
+                    "陷", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                74
+            ], 
+            "magentaStars": [
+                [
+                    23, 
+                    "陷", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    37, 
+                    "", 
+                    ""
+                ], 
+                [
+                    46, 
+                    "", 
+                    ""
+                ], 
+                [
+                    48, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                100, 
+                84
+            ], 
+            "ageRange": "26－35", 
+            "yearInLunar": "戊辰", 
+            "gongName": "福德宫", 
+            "stage": "冠带"
+        }, 
+        {
+            "redStars": [
+                [
+                    4, 
+                    "平", 
+                    "禄"
+                ], 
+                [
+                    13, 
+                    "旺", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                67
+            ], 
+            "magentaStars": [
+                [
+                    15, 
+                    "庙", 
+                    ""
+                ], 
+                [
+                    29, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    43, 
+                    "", 
+                    ""
+                ], 
+                [
+                    50, 
+                    "", 
+                    ""
+                ], 
+                [
+                    61, 
+                    "", 
+                    ""
+                ], 
+                [
+                    63, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                93, 
+                77
+            ], 
+            "ageRange": "76－85", 
+            "yearInLunar": "癸酉", 
+            "gongName": "疾厄宫", 
+            "stage": "　死"
+        }, 
+        {
+            "redStars": [
+                [
+                    7, 
+                    "得", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                73
+            ], 
+            "magentaStars": [
+                [
+                    17, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    39, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                99, 
+                83
+            ], 
+            "ageRange": "16－25", 
+            "yearInLunar": "丁卯", 
+            "gongName": "父母宫", 
+            "stage": "沐浴"
+        }, 
+        {
+            "redStars": [
+                [
+                    3, 
+                    "陷", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                68
+            ], 
+            "magentaStars": [
+                [
+                    25, 
+                    "陷", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    45, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                94, 
+                78
+            ], 
+            "yearInLunar": "甲戌", 
+            "ageRange": "86－95", 
+            "star": true, 
+            "gongName": "财帛", 
+            "stage": "　墓"
+        }, 
+        {
+            "redStars": [], 
+            "cyanStars": [
+                72
+            ], 
+            "magentaStars": [
+                [
+                    30, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    36, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                98, 
+                82
+            ], 
+            "yearInLunar": "丙寅", 
+            "ageRange": "06－15", 
+            "star": true, 
+            "gongName": "身命", 
+            "stage": "长生"
+        }, 
+        {
+            "redStars": [
+                [
+                    1, 
+                    "庙", 
+                    ""
+                ], 
+                [
+                    14, 
+                    "旺", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                71
+            ], 
+            "magentaStars": [], 
+            "brownStars": [
+                [
+                    41, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                97, 
+                81
+            ], 
+            "ageRange": "", 
+            "yearInLunar": "丁丑", 
+            "gongName": "兄弟宫", 
+            "stage": "　养"
+        }, 
+        {
+            "redStars": [
+                [
+                    2, 
+                    "庙", 
+                    ""
+                ]
+            ], 
+            "cyanStars": [
+                70
+            ], 
+            "magentaStars": [
+                [
+                    19, 
+                    "旺", 
+                    ""
+                ], 
+                [
+                    26, 
+                    "陷", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    33, 
+                    "", 
+                    ""
+                ], 
+                [
+                    59, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                96, 
+                80
+            ], 
+            "ageRange": "", 
+            "yearInLunar": "丙子", 
+            "gongName": "夫妻宫", 
+            "stage": "　胎"
+        }, 
+        {
+            "redStars": [], 
+            "cyanStars": [
+                69
+            ], 
+            "magentaStars": [
+                [
+                    18, 
+                    "", 
+                    ""
+                ], 
+                [
+                    24, 
+                    "平", 
+                    ""
+                ]
+            ], 
+            "brownStars": [
+                [
+                    35, 
+                    "", 
+                    ""
+                ], 
+                [
+                    42, 
+                    "", 
+                    ""
+                ], 
+                [
+                    62, 
+                    "", 
+                    ""
+                ]
+            ], 
+            "blueStars": [
+                95, 
+                79
+            ], 
+            "ageRange": "", 
+            "yearInLunar": "乙亥", 
+            "gongName": "子女宫", 
+            "stage": "　绝"
+        }
+    ], 
+    "inputs": {
+        "d": 1, 
+        "min": 0, 
+        "y": 1990, 
+        "h": 2, 
+        "mode": 2, 
+        "m": 1, 
+        "submit": [
+            "%E5%BC%80%E5%A7%8B%E6%8E%92%E7%9B%98"
+        ], 
+        "sex": 0
+    }, 
+    "centerGong": {
+        "子斗在": "寅", 
+        "阴历生日": "己巳年12月05日丑时生　　", 
+        "身主": "天机", 
+        "盘类": "大限", 
+        "阳历生日": "1990年01月01日01时生", 
+        "局": "火六", 
+        "命四化": "己武贪天曲", 
+        "身宫在": "寅", 
+        "命宫在": "寅", 
+        "命主": "禄存", 
+        "年龄": 27
+    }
+}
