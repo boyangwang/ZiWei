@@ -20,6 +20,7 @@ from pprint import pprint
 class Pan(object):
 	'''missing stars: 31, 51,52,61'''
 	STARS_LIST = None
+	HTML_LINE_SEPARATOR = '<br />'
 
 	@staticmethod
 	def getName(inputs):
@@ -344,14 +345,14 @@ class Pan(object):
 	def fillMajorStarBrightness(self, bars):
 		twelveGongs = self.data['twelveGongs']
 
-		line6 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 6))
-		line7 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 7))
-		line14 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 14))
-		line15 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 15))
-		line22 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 22))
-		line23 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 23))
-		line30 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 30))
-		line31 = unicode(Pan.getNthLineFromPage(str(self.page), '<br>', 31))
+		line6 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 6))
+		line7 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 7))
+		line14 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 14))
+		line15 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 15))
+		line22 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 22))
+		line23 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 23))
+		line30 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 30))
+		line31 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 31))
 
 		for i in range(5, 5 + 9):
 			if (line6[i] != u'　'):
