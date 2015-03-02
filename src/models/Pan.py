@@ -20,7 +20,7 @@ from pprint import pprint
 class Pan(object):
 	'''missing stars: 31, 51,52,61'''
 	STARS_LIST = None
-	HTML_LINE_SEPARATOR = '<br />'
+	HTML_LINE_SEPARATOR = '<br/>'
 
 	@staticmethod
 	def getName(inputs):
@@ -365,14 +365,6 @@ class Pan(object):
 		line23 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 23))
 		line30 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 30))
 		line31 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 31))
-
-		# print str(self.page)
-		print Pan.HTML_LINE_SEPARATOR
-		print str(self.page).find('<br />')
-		print find_nth(str(self.page), '<br />', 3)
-		print find_nth(str(self.page), '<br />', 4)
-		print Pan.getNthLineFromPageDbg(str(self.page), Pan.HTML_LINE_SEPARATOR, 2)
-		print Pan.getNthLineFromPageDbg(str(self.page), Pan.HTML_LINE_SEPARATOR, 3)
 
 		for i in range(5, 5 + 9):
 			if (line6[i] != u'　'):
