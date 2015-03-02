@@ -38,7 +38,7 @@ def crawlResponseWithInputs(inputs):
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True):
 	try:
-		driver = DBDriver()
+		# driver = DBDriver()
 		if (http):
 			page = crawlResponseWithInputs(inputs)
 		else:
@@ -66,7 +66,7 @@ def createPanObjectFromInputs(inputs, http=True):
 	except Exception as e:
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
-		traceback.print_tb(sys.last_traceback, None, errlog)
+		# traceback.print_tb(sys.exc_info()[3], None, errlog)
 		traceback.print_exc(None, errlog)
 
 		return None
