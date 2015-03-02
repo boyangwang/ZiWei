@@ -26,12 +26,20 @@ class Pan(object):
 		name = '-'.join(['y', str(inputs['y']), 'm', str(inputs['m']), 'd', str(inputs['d']), 'h', str(inputs['h']), 'sex', str(inputs['sex']), 'mode', str(inputs['mode'])]) + '.json'
 		return name
 	
+	def serializeToFile(self):
+		jsonFile = open('data/' + self.name, 'w', encoding="utf-8")
+		jsonFile.write(json.dumps(self.serialize(), , ensure_ascii=False))
+		return self.name
+
 	def serialize(self):	
-		name = Pan.getName(self.data['inputs'])
-		jsonFile = open('data/' + name, 'w', encoding="utf-8")
-		jsonString = json.dumps(self.data, indent=4, ensure_ascii=False)
-		jsonFile.write(jsonString)
-		return name
+		
+		# jsonString = json.dumps(self.data, indent=4, ensure_ascii=False)
+		jsonObj = {
+			'name': self.name,
+			'data': self.data
+		}
+		# jsonString = json.dumps(jsonObj, ensure_ascii=False)
+		return jsonObj
 
 	@staticmethod
 	def readStarList():
@@ -60,6 +68,7 @@ class Pan(object):
 		self.page = bs4.BeautifulSoup(page)
 		Pan.readStarList()
 		print Pan.getName(self.data['inputs'])
+		self.name = Pan.getName(self.data['inputs'])
 
 	def initData(self):
 		self.setCenterGong()

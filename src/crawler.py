@@ -153,13 +153,15 @@ def main():
 	p = Pool(10)
 
 	time.clock()
-	result = p.map(createPanObjectFromInputs, inputsArray)
+	# result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
 	# 	createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True)
-	# name = panObj.serialize()
+	panObj = createPanObjectFromInputs(inputs, http=True)
+	driver = DBDriver()
+	jsonObj = panObj.serialize()
+	driver.insert()
 
 	print 'Elapsed time: ' + str(time.clock())
 
