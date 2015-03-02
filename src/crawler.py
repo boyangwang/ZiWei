@@ -38,7 +38,7 @@ def crawlResponseWithInputs(inputs):
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True):
 	try:
-		# driver = DBDriver()
+		driver = DBDriver()
 		if (http):
 			page = crawlResponseWithInputs(inputs)
 		else:
@@ -57,10 +57,10 @@ def createPanObjectFromInputs(inputs, http=True):
 		panObj.initData()
 		
 		
-		# jsonObj = panObj.serialize()
-		# driver.insert(jsonObj)
+		jsonObj = panObj.serialize()
+		driver.insert(jsonObj)
 
-		print panObj.serializeToFile()
+		# print panObj.serializeToFile()
 
 		return panObj
 	except Exception as e:
@@ -138,7 +138,7 @@ def main():
 	# starList = readStarList() #createStarList() 
 
 	a = date(1990, 1, 1)
-	b = date(1990, 2, 1)
+	b = date(1991, 2, 1)
 	for dt in rrule(DAILY, dtstart=a, until=b):
 		templateInput = {
 			'y':int(dt.strftime('%Y')),
@@ -161,12 +161,12 @@ def main():
 	p = Pool(10)
 
 	time.clock()
-	# result = p.map(createPanObjectFromInputs, inputsArray)
+	result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
 	# 	createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True)
+	# panObj = createPanObjectFromInputs(inputs, http=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 
