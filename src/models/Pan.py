@@ -28,7 +28,7 @@ class Pan(object):
 	
 	def serializeToFile(self):
 		jsonFile = open('data/' + self.name, 'w', encoding="utf-8")
-		jsonFile.write(json.dumps(self.serialize(), , ensure_ascii=False))
+		jsonFile.write(json.dumps(self.serialize(), ensure_ascii=False))
 		return self.name
 
 	def serialize(self):	
