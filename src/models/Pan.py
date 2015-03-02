@@ -313,6 +313,18 @@ class Pan(object):
 		end = find_nth(page, delim, firstDelim + 1)
 		return page[start:end + len(delim)]
 
+	@staticmethod
+	def getNthLineFromPageDbg(page, delim, n):
+		if (n == 0):
+			n = 1
+		firstDelim = n - 1
+		start = find_nth(page, delim, firstDelim)
+		print start
+		end = find_nth(page, delim, firstDelim + 1)
+		print end
+		print page[start:end + len(delim)]
+		return page[start:end + len(delim)]
+
 	''' n from 0 '''
 	@staticmethod
 	def setNthStarBrightnessOfGong(n, brightness, gong):
@@ -354,8 +366,14 @@ class Pan(object):
 		line30 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 30))
 		line31 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 31))
 
-		print str(self.page)
-		print Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 23)
+		# print str(self.page)
+		print Pan.HTML_LINE_SEPARATOR
+		print str(self.page).find('<br />')
+		print find_nth(str(self.page), '<br />', 3)
+		print find_nth(str(self.page), '<br />', 4)
+		print Pan.getNthLineFromPageDbg(str(self.page), Pan.HTML_LINE_SEPARATOR, 2)
+		print Pan.getNthLineFromPageDbg(str(self.page), Pan.HTML_LINE_SEPARATOR, 3)
+
 		for i in range(5, 5 + 9):
 			if (line6[i] != u'　'):
 				# print i
