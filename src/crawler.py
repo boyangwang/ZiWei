@@ -7,10 +7,12 @@ _open_func_bak = open # Make a back up, just in case
 open = codecs.open
 
 import time
+from dbDrive import DBDriver
 from multiprocessing import Pool
 import json
 import urllib
 import urllib2
+import socket
 from bs4 import BeautifulSoup as BS
 from models.BenMingPan import BenMingPan
 from models.DaXianPan import DaXianPan 
@@ -34,26 +36,32 @@ def crawlResponseWithInputs(inputs):
 # 2       7
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True):
-	if (http):
-		page = crawlResponseWithInputs(inputs)
-	else:
-		page = open('sample-response.html', 'r').read()
+	try:
+		if (http):
+			page = crawlResponseWithInputs(inputs)
+		else:
+			page = open('sample-response.html', 'r').read()
 
-	if (inputs['mode'] == 1):
-		panObj = BenMingPan(inputs, page)
-	elif (inputs['mode'] == 2):
-		panObj = DaXianPan(inputs, page)
-	elif (inputs['mode'] == 3):
-		panObj = LiuNianPan(inputs, page)
-	else:
-		# unrecognized mode
-		panObj = None
+		if (inputs['mode'] == 1):
+			panObj = BenMingPan(inputs, page)
+		elif (inputs['mode'] == 2):
+			panObj = DaXianPan(inputs, page)
+		elif (inputs['mode'] == 3):
+			panObj = LiuNianPan(inputs, page)
+		else:
+			# unrecognized mode
+			panObj = None
 
-	panObj.initData()
-	''' To change '''
-	name = panObj.serialize()
+		panObj.initData()
+		
+		''' To change '''
+		name = panObj.serialize()
 
-	return panObj
+		return panObj
+	except Exception as e:
+		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
+		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
+		return None
 
 def createStarList():
 	starList = list()
@@ -112,21 +120,13 @@ def main():
 	inputs = {
 		'y':1990,
 		'm':1,
-		'd':1,
-		'h':2,
-		'min':0,
-		'sex':0,
-		'mode':1,
-	}
-	inputs = {
-		'y':1990,
-		'm':1,
-		'd':1,
-		'h':0,
+		'd':5,
+		'h':8,
 		'min':0,
 		'sex':1,
-		'mode':1,
+		'mode':3,
 	}
+	
 	# starList = readStarList() #createStarList() 
 
 	a = date(1990, 1, 1)
@@ -150,12 +150,17 @@ def main():
 					currentInput['mode'] = mode
 					inputsArray.append(currentInput)
 
-	# p = Pool(30)
+	p = Pool(10)
 
 	time.clock()
-	# result = p.map(createPanObjectFromInputs, inputsArray)
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	result = p.map(createPanObjectFromInputs, inputsArray)
+
+	# for inputs in inputsArray:
+	# 	createPanObjectFromInputs(inputs)
+
+	# panObj = createPanObjectFromInputs(inputs, http=True)
+	# name = panObj.serialize()
+
 	print 'Elapsed time: ' + str(time.clock())
 
 	# for y in range(1990, 1992):
@@ -173,8 +178,7 @@ def main():
 	# 						panObj = createPanObjectFromInputs(inputs, http=True)
 	# 						name = panObj.serialize()
 
-	# panObj = createPanObjectFromInputs(inputs, http=True)
-	# name = panObj.serialize()
+	
 
 	# correct = open('1-0-0-1-1-1-1990-out.json', 'r', encoding="utf-8").read()
 	# current = open(name, 'r', encoding="utf-8").read()

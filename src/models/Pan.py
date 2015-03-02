@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import codecs
 codecs.register(lambda name: codecs.lookup('utf-8') if name == 'cp65001' else None)
 _open_func_bak = open # Make a back up, just in case
@@ -17,16 +18,16 @@ from pprint import pprint
 	                          3 (2)
 '''
 class Pan(object):
-	'''missing stars: 51,52,61'''
+	'''missing stars: 31, 51,52,61'''
 	STARS_LIST = None
 
-	def getName(self):
-		inputs = self.data['inputs']
+	@staticmethod
+	def getName(inputs):
 		name = '-'.join(['y', str(inputs['y']), 'm', str(inputs['m']), 'd', str(inputs['d']), 'h', str(inputs['h']), 'sex', str(inputs['sex']), 'mode', str(inputs['mode'])]) + '.json'
 		return name
 	
 	def serialize(self):	
-		name = self.getName()
+		name = Pan.getName(self.data['inputs'])
 		jsonFile = open('data/' + name, 'w', encoding="utf-8")
 		jsonString = json.dumps(self.data, indent=4, ensure_ascii=False)
 		jsonFile.write(jsonString)
@@ -34,9 +35,10 @@ class Pan(object):
 
 	@staticmethod
 	def readStarList():
-		starListFile = open('starList.json', 'r', encoding="utf-8")
-		starList = json.load(starListFile)
-		Pan.STARS_LIST = starList
+		if (Pan.STARS_LIST == None):
+			starListFile = open('starList.json', 'r', encoding="utf-8")
+			starList = json.load(starListFile)
+			Pan.STARS_LIST = starList
 
 	@staticmethod
 	def byteify(input):
@@ -57,24 +59,23 @@ class Pan(object):
 
 		self.page = bs4.BeautifulSoup(page)
 		Pan.readStarList()
-		print self.getName()
+		print Pan.getName(self.data['inputs'])
 
 	def initData(self):
 		self.setCenterGong()
 		self.cleanUpCenterGong()
 		self.setTwelveGongs()
-		
-	''' 0 1  2  3
-		4       5
-		6       7
-	 	8 9  10 11
 
-	0:no star 1:star 2:diamond
+ #    0 1  2  3
+	# 4       5
+	# 6       7
+	# 8 9  10 11
 
-	1990-01-01
-	male:1, female:0,
-	life:1, decade:2, year:3,
-	'''
+	# 0:no star 1:star 2:diamond
+
+	# 1990-01-01
+	# male:1, female:0,
+	# life:1, decade:2, year:3
 	def setTwelveGongs(self):
 		horizontalSeparatorOne = self.page.find_all(text='┌───────────────────────────────────────┐')
 		twelveGongs = self.data['twelveGongs']
