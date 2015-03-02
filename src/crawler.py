@@ -128,11 +128,11 @@ def main():
 	inputs = {
 		'y':1990,
 		'm':1,
-		'd':5,
-		'h':8,
+		'd':1,
+		'h':0,
 		'min':0,
 		'sex':1,
-		'mode':3,
+		'mode':1,
 	}
 	
 	# starList = readStarList() #createStarList() 

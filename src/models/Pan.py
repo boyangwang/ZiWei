@@ -354,6 +354,8 @@ class Pan(object):
 		line30 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 30))
 		line31 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 31))
 
+		print str(self.page)
+		print Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 23)
 		for i in range(5, 5 + 9):
 			if (line6[i] != u'　'):
 				# print i
