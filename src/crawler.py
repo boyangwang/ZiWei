@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import traceback
 reload(sys)
 sys.setdefaultencoding('utf8')
 import codecs
@@ -37,6 +38,7 @@ def crawlResponseWithInputs(inputs):
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True):
 	try:
+		driver = DBDriver()
 		if (http):
 			page = crawlResponseWithInputs(inputs)
 		else:
@@ -54,13 +56,19 @@ def createPanObjectFromInputs(inputs, http=True):
 
 		panObj.initData()
 		
-		''' To change '''
-		name = panObj.serialize()
+		
+		# jsonObj = panObj.serialize()
+		# driver.insert(jsonObj)
+
+		print panObj.serializeToFile()
 
 		return panObj
 	except Exception as e:
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
+		traceback.print_tb(sys.last_traceback, None, errlog)
+		traceback.print_exc(None, errlog)
+
 		return None
 
 def createStarList():
@@ -159,9 +167,6 @@ def main():
 	# 	createPanObjectFromInputs(inputs)
 
 	panObj = createPanObjectFromInputs(inputs, http=True)
-	driver = DBDriver()
-	jsonObj = panObj.serialize()
-	driver.insert()
 
 	print 'Elapsed time: ' + str(time.clock())
 
