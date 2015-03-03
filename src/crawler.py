@@ -44,10 +44,10 @@ def createPanObjectFromInputs(inputs, http=True):
 		results = driver.collection.find({
 			'name': name
 		})
-		
-		print 'LEN: ', results.limit(1).size()
 
-		if (len(results) < 1):
+		print 'LEN: ', results.limit(1).count()
+
+		if (results.limit(1).count() >= 1):
 			print 'EXIST: ', name
 			return
 
