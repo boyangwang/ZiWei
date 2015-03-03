@@ -137,15 +137,15 @@ def readStarList():
 def createInputsArray(a, b):
 
 	for dt in rrule(DAILY, dtstart=a, until=b):
-	templateInput = {
-		'y':int(dt.strftime('%Y')),
-		'm':int(dt.strftime('%m')),
-		'd':int(dt.strftime('%d')),
-		'h':0,
-		'min':0,
-		'sex':0,
-		'mode':1,
-	}
+		templateInput = {
+			'y':int(dt.strftime('%Y')),
+			'm':int(dt.strftime('%m')),
+			'd':int(dt.strftime('%d')),
+			'h':0,
+			'min':0,
+			'sex':0,
+			'mode':1,
+		}
 	for h in range(0,24,2):
 		for sex in range(0,2):
 			for mode in range(1,4):
@@ -177,6 +177,7 @@ def main():
 	
 	global driver = DBDriver()
 	inputsArray = [for input in createInputsArray(date(1990, 1, 1), date(1991, 2, 1))]
+	print 'GENERATOR DONE'
 	result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
