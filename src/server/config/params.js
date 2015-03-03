@@ -1,0 +1,13 @@
+var param = {};
+param.MEAN_DEMAND_MU = 4.26;
+param.MEAN_DEMAND_SIGMA = 0.4264;
+param.SD_RATIO = 0.3;
+param.NUMBER_OF_WEEKS = 15;
+param.SALVAGE_VALUE = 25;
+param.INITIAL_INVENTORY = 2000;
+param.RESPONSE = [0, 1.0, 1.285, 1.801, 2.838];
+param.PRICE = [0, 60, 54, 48, 36];
+param.PRICE_LABEL = ['', 'Full', '10%', '20%', '40%'];
+param.NUM_ROUNDS = 5;
+param.MAX_INT = Math.pow(2, 32) - 1;
+module.exports = param;
