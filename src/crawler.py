@@ -38,7 +38,20 @@ def crawlResponseWithInputs(inputs):
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True):
 	try:
-		driver = DBDriver()
+		name = Pan.getName(inputs)
+		print 'START: ', name
+		
+		results = driver.collection.find({
+			'name': name
+		})
+
+		print results
+		print len(results)
+
+		if (len < 1):
+			print 'EXIST: ', name
+			return
+
 		if (http):
 			page = crawlResponseWithInputs(inputs)
 		else:
@@ -55,11 +68,9 @@ def createPanObjectFromInputs(inputs, http=True):
 			panObj = None
 
 		panObj.initData()
-		
-		
 		jsonObj = panObj.serialize()
 		driver.insert(jsonObj)
-
+		print 'DONE: ', name
 		# print panObj.serializeToFile()
 
 		return panObj
@@ -123,8 +134,29 @@ def readStarList():
 	starList = json.load(starListFile)
 	return starList
 
+def createInputsArray(a, b):
+
+	for dt in rrule(DAILY, dtstart=a, until=b):
+	templateInput = {
+		'y':int(dt.strftime('%Y')),
+		'm':int(dt.strftime('%m')),
+		'd':int(dt.strftime('%d')),
+		'h':0,
+		'min':0,
+		'sex':0,
+		'mode':1,
+	}
+	for h in range(0,24,2):
+		for sex in range(0,2):
+			for mode in range(1,4):
+				currentInput = templateInput.copy()
+				currentInput['h'] = h
+				currentInput['sex'] = sex
+				currentInput['mode'] = mode
+				yield currentInput	
+
 def main():
-	inputsArray = []
+	
 	inputs = {
 		'y':1990,
 		'm':1,
@@ -137,30 +169,14 @@ def main():
 	
 	# starList = readStarList() #createStarList() 
 
-	a = date(1990, 1, 1)
-	b = date(1991, 2, 1)
-	for dt in rrule(DAILY, dtstart=a, until=b):
-		templateInput = {
-			'y':int(dt.strftime('%Y')),
-			'm':int(dt.strftime('%m')),
-			'd':int(dt.strftime('%d')),
-			'h':0,
-			'min':0,
-			'sex':0,
-			'mode':1,
-		}
-		for h in range(0,24,2):
-			for sex in range(0,2):
-				for mode in range(1,4):
-					currentInput = templateInput.copy()
-					currentInput['h'] = h
-					currentInput['sex'] = sex
-					currentInput['mode'] = mode
-					inputsArray.append(currentInput)
+
 
 	p = Pool(10)
 
 	time.clock()
+	
+	global driver = DBDriver()
+	inputsArray = [for input in createInputsArray(date(1990, 1, 1), date(1991, 2, 1))]
 	result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
