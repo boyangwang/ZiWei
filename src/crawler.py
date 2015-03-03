@@ -48,7 +48,7 @@ def createPanObjectFromInputs(inputs, http=True):
 		print results
 		print len(results)
 
-		if (len < 1):
+		if (len(results) < 1):
 			print 'EXIST: ', name
 			return
 
