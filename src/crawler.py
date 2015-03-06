@@ -40,18 +40,19 @@ def createPanObjectFromInputs(inputs, http=True):
 	try:
 		name = Pan.getName(inputs)
 		print 'START: ', name
+		driver = DBDriver()
 		
 		results = driver.collection.find({
 			'name': name
 		})
 
-		print 'LEN: ', results.limit(1).count()
+		# print 'LEN: ', results.limit(1).count()
 
 		if (results.limit(1).count() >= 1):
 			print 'EXIST: ', name
 			return
 
-		if (http):
+		if (http):	
 			page = crawlResponseWithInputs(inputs)
 		else:
 			page = open('sample-response.html', 'r').read()
@@ -175,8 +176,6 @@ def main():
 
 	time.clock()
 	
-	global driver
-	driver = DBDriver()
 	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2000, 1, 1))]
 	print 'GENERATOR DONE'
 	result = p.map(createPanObjectFromInputs, inputsArray)
