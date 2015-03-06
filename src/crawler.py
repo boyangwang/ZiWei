@@ -74,6 +74,8 @@ def createPanObjectFromInputs(inputs, http=True):
 
 		return panObj
 	except Exception as e:
+		print 'ERROR: ', Pan.getName(inputs)
+		print str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message)
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
 		# traceback.print_tb(sys.exc_info()[3], None, errlog)
@@ -169,18 +171,18 @@ def main():
 
 
 
-	p = Pool(10)
+	p = Pool(3)
 
 	time.clock()
 	
 	global driver
 	driver = DBDriver()
-	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
+	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2000, 1, 1))]
 	print 'GENERATOR DONE'
-	# result = p.map(createPanObjectFromInputs, inputsArray)
+	result = p.map(createPanObjectFromInputs, inputsArray)
 
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	# for inputs in inputsArray:
+	# 	createPanObjectFromInputs(inputs)
 
 	# panObj = createPanObjectFromInputs(inputs, http=True)
 
