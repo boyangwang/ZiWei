@@ -13,7 +13,6 @@
 
 
 #ljms_DIV_1 {
-    float: left;
     font-family: 'Times New Roman';
     height: 439px;
     width: 350px;
@@ -151,7 +150,7 @@
     height: 24px;
     list-style-type: none;
     vertical-align: middle;
-    width: 115px;
+    width: 80px;
     -webkit-appearance: none;
     -webkit-box-shadow: rgb(216, 212, 212) 1px 1px 0px 0px;
     perspective-origin: 58.5px 14px;
@@ -209,7 +208,7 @@
     -webkit-transform-origin: 34px 16px;
     font: normal normal bold normal 14px/normal 'Times New Roman';
     list-style: none outside none;
-    padding: 15px 0px 0px;
+    padding: 0px 0px 0px;
 }/*#ljms_LABEL_10*/
 
 #ljms_IMG_11, #ljms_IMG_12 {
@@ -327,7 +326,7 @@
     height: 20px;
     list-style-type: none;
     vertical-align: middle;
-    width: 115px;
+    width: 80px;
     -webkit-appearance: none;
     -webkit-box-shadow: rgb(216, 212, 212) 1px 1px 0px 0px;
     perspective-origin: 58.5px 12px;
@@ -533,10 +532,23 @@
     list-style: none outside none;
 }/*#ljms_LI_49*/
 
+.sexRadio {
 
+}
 
+.form-control {
+	display: inline-block;
+	
+}
 
+#ljms_SELECT_19 {
+	width: 108px !important;
+	padding: 6px 0px;
+}
 
+.ui-datepicker-month, .ui-datepicker-year {
+	color: black;
+}
 
 
 

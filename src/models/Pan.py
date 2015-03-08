@@ -11,6 +11,7 @@ import re
 from pprint import pprint
 
 ''' num records:
+{name:'y-1995-m-3-d-27-h-2-sex-1-mode-1.json'}
 	1900-2020  -------------- 120
 	                          365
 	                          12

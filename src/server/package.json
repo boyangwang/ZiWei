@@ -1,0 +1,10 @@
+{
+  "name": "ZiWei",
+  "description": "ZiWei",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "*"
+  }
+}

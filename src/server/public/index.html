@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <style>
     body {
@@ -36,121 +36,93 @@
             </nav>
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
-            <div class="container">
-              <div id="ljms_DIV_1">
+            <div class="container row">
+              <div id="ljms_DIV_1 col-md-12">
                 <div id="ljms_DIV_2">
-                  <form method="GET" action="/app/index.php" name="info" id="ljms_FORM_3" enctype="application/x-www-form-urlencoded">
-                    <input type="hidden" name="s" id="ljms_INPUT_4" value="/Index/lifetray" />
-                    <input type="hidden" name="token" value="Y9CmlNCfxaJplGKW0J%2BUo5%2BZm2aVYWeinpjRy5yilGA%3D" id="ljms_INPUT_5" />
+                  <form name="info" id="ljms_FORM_3" method="post" action="/ZiWeiPan" >
                     <label id="ljms_LABEL_7">
                       姓名:
                     </label>
-                    <input type="text" name="name" id="ljms_INPUT_8" />
+                    <input type="text" class="form-control" name="name" id="ljms_INPUT_8" style="margin-left: 4px;"/>
+                    <br>
+                    <div style="padding: 15px 0px 0px 0px">
                     <label id="ljms_LABEL_10">
                       性别:
-                    </label><img src="/app/jiemeng/Tpl/default/Public/images/boyin.png" id="ljms_IMG_11" alt='' /><img src="/app/jiemeng/Tpl/default/Public/images/grilout.png" id="ljms_IMG_12" alt='' />
-                    <input type="hidden" name="sex" id="ljms_INPUT_13" value="0" />
+                    </label>
+                    
+                    <div class="radio-inline" style="margin-left: 20px">
+                      <label>
+                        <input type="radio" name="sex" class="sexRadio" value=1 checked>
+                        男
+                      </label>
+                    </div>
+                    <div class="radio-inline">
+                      <label>
+                        <input type="radio" name="sex" class="sexRadio" value=0>
+                        女
+                      </label>
+                    </div>
+                    </div>
+                    <!-- <input type="hidden" name="sex" id="ljms_INPUT_13" value="0" /> -->
+                    <br>
                     <label id="ljms_LABEL_15">
                       公历生日:
                     </label>
-                    <input type="text" id="ljms_INPUT_16" name="birthday" />
+                    <input class="form-control datepicker" type="text" id="ljms_INPUT_16" name="birthday"/>
                     <label id="ljms_LABEL_18">
                       时辰：
                     </label>
-                    <select name="time" id="ljms_SELECT_19">
-                      <option value="23" id="ljms_OPTION_20">
-                        子时 23点
+                    <div style="margin: 14px 0px 0px 6px; display: inline-block;">
+                    <select class="form-control" name="h" id="ljms_SELECT_19">
+                      <option value="0" id="ljms_OPTION_20">
+                        子时 23-0点
                       </option>
-                      <option value="00" id="ljms_OPTION_21">
-                        子时 0点
+                      <option value=2 id="ljms_OPTION_22">
+                        丑时 1-2点
                       </option>
-                      <option value="01" id="ljms_OPTION_22">
-                        丑时 1点
+                      <option value=4 id="ljms_OPTION_24">
+                        寅时 3-4点
                       </option>
-                      <option value="02" id="ljms_OPTION_23">
-                        丑时 2点
+                      <option value=6 id="ljms_OPTION_26">
+                        卯时 5-6点
                       </option>
-                      <option value="03" id="ljms_OPTION_24">
-                        寅时 3点
+                      <option value=8 id="ljms_OPTION_28">
+                        辰时 7-8点
                       </option>
-                      <option value="04" id="ljms_OPTION_25">
-                        寅时 4点
+                      <option value=10 id="ljms_OPTION_30">
+                        巳时 9-10点
                       </option>
-                      <option value="05" id="ljms_OPTION_26">
-                        卯时 5点
+                      <option value=12 id="ljms_OPTION_32">
+                        午时 11-12点
                       </option>
-                      <option value="06" id="ljms_OPTION_27">
-                        卯时 6点
+                      <option value=14 id="ljms_OPTION_34">
+                        未时 13-14点
                       </option>
-                      <option value="07" id="ljms_OPTION_28">
-                        辰时 7点
+                      <option value=16 id="ljms_OPTION_36">
+                        申时 15-16点
                       </option>
-                      <option value="08" id="ljms_OPTION_29">
-                        辰时 8点
+                      <option value=18 id="ljms_OPTION_38">
+                        酉时 17-18点
                       </option>
-                      <option value="09" id="ljms_OPTION_30">
-                        巳时 9点
+                      <option value=20 id="ljms_OPTION_40">
+                        戌时 19-20点
                       </option>
-                      <option value="10" id="ljms_OPTION_31">
-                        巳时 10点
-                      </option>
-                      <option value="11" id="ljms_OPTION_32">
-                        午时 11点
-                      </option>
-                      <option value="12" id="ljms_OPTION_33">
-                        午时 12点
-                      </option>
-                      <option value="13" id="ljms_OPTION_34">
-                        未时 13点
-                      </option>
-                      <option value="14" id="ljms_OPTION_35">
-                        未时 14点
-                      </option>
-                      <option value="15" id="ljms_OPTION_36">
-                        申时 15点
-                      </option>
-                      <option value="16" id="ljms_OPTION_37">
-                        申时 16点
-                      </option>
-                      <option value="17" id="ljms_OPTION_38">
-                        酉时 17点
-                      </option>
-                      <option value="18" id="ljms_OPTION_39">
-                        酉时 18点
-                      </option>
-                      <option value="19" id="ljms_OPTION_40">
-                        戌时 19点
-                      </option>
-                      <option value="20" id="ljms_OPTION_41">
-                        戌时 20点
-                      </option>
-                      <option value="21" id="ljms_OPTION_42">
-                        亥时 21点
-                      </option>
-                      <option value="22" id="ljms_OPTION_43">
-                        亥时 22点
+                      <option value=22 id="ljms_OPTION_42">
+                        亥时 21-22点
                       </option>
                     </select>
-                    <input type="hidden" name="__hash__" value="8b362b6cbc1165442f624b24f8bd4be9_e138879bc90ae3297b4d70dd9f06b19d" id="ljms_INPUT_44" />
+                    </div>
                   </form>
-                </div>
-                <div id="ljms_DIV_45">
-                  <img src="/app/jiemeng/Tpl/default/Public/images/lifepan.png" width="106" id="ljms_IMG_47" alt='' /><img src="/app/jiemeng/Tpl/default/Public/images/aboutus.png" width="28" height="28" id="ljms_IMG_48" alt='' />
-                  <!--<p><a href="#">什么是命盘?</a></p>-->
-                  <img src="/app/jiemeng/Tpl/default/Public/images/yearpan.png" width="106" id="ljms_IMG_50" alt='' /><img src="/app/jiemeng/Tpl/default/Public/images/aboutus.png" width="28" height="28" id="ljms_IMG_51" alt='' />
-                  <!--<p><a href="#">什么是流年盘?</a></p>-->
-
-                </div>
+                  
               </div>
             </div>
 
-            <hr>
+            <div class="cs_main_bot" style="display: block;"><img src="/img/lifepan.png" width="106" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(1)"><img src="/img/daxianpan.png" width="106" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(2)"><img src="/img/yearpan.png" width="106" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(3)"></div>
 
-            <footer>
-              <p>&copy; Boyang 2015</p>
-            </footer>
+            </div>
 
             <script src="js/vendor/jquery-1.11.2.min.js"></script>
+            <script src="js/vendor/jquery-ui.min.js"></script>
             <script src="js/vendor/bootstrap.min.js"></script>
             <script src="js/main.js"></script>
           </body>
