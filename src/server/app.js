@@ -26,6 +26,7 @@ var handlePostZiWeiPan = function(app, req, res) {
 	var inputs = req.body;
 	var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
 	var panObj = null;
+	console.log('name: ', name);
 	GLOBAL.Db.collection('zhycw', function(err, collection) {
         collection.findOne({'name': name}, function(err, item) {
         	resultPage = 'default';
