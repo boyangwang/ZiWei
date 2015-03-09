@@ -69,9 +69,9 @@ def createPanObjectFromInputs(inputs, http=True):
 
 		panObj.initData()
 		jsonObj = panObj.serialize()
-		driver.insert(jsonObj)
+		# driver.insert(jsonObj)
 		print 'DONE: ', name
-		# print panObj.serializeToFile()
+		panObj.serializeToFile()
 
 		return panObj
 	except Exception as e:
@@ -172,18 +172,18 @@ def main():
 
 
 
-	p = Pool(3)
+	# p = Pool(3)
 
 	time.clock()
 	
 	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2000, 1, 1))]
 	print 'GENERATOR DONE'
-	result = p.map(createPanObjectFromInputs, inputsArray)
+	# result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
-	# 	createPanObjectFromInputs(inputs)
+		# createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True)
+	panObj = createPanObjectFromInputs(inputs, http=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 
