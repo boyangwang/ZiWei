@@ -21,7 +21,7 @@ from pprint import pprint
 class Pan(object):
 	'''missing stars: 31, 51,52,61'''
 	STARS_LIST = None
-	HTML_LINE_SEPARATOR = '<br/>'
+	HTML_LINE_SEPARATOR = '<br>'
 
 	@staticmethod
 	def getName(inputs):
@@ -66,7 +66,7 @@ class Pan(object):
 		self.data['inputs'] = inputs
 		self.data['twelveGongs'] = list()
 		self.data['centerGong'] = dict()
-
+		page = self.replaceBRs(page)
 		self.page = bs4.BeautifulSoup(page)
 		Pan.readStarList()
 		print Pan.getName(self.data['inputs'])
@@ -76,6 +76,12 @@ class Pan(object):
 		self.setCenterGong()
 		self.cleanUpCenterGong()
 		self.setTwelveGongs()
+
+	@staticmethod
+	def replaceBRs(page):
+		page = page.replace('<br/>', '<br>')
+		return page
+
 
  #    0 1  2  3
 	# 4       5
@@ -351,6 +357,7 @@ class Pan(object):
 
 	@staticmethod
 	def printLineChar(line):
+		print len(line)
 		for i in range(0, len(line)):
 			print i
 			print line[i]

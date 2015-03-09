@@ -25,7 +25,7 @@
 }/*#ljms_DIV_1*/
 
 #ljms_DIV_2 {
-    background-image: url(http://www.linghit.com/app/jiemeng/Tpl/default/Public/images/cs_main_tbg.png);
+    background-image: url(/img/cs_main_tbg.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     font-family: 'Times New Roman';
@@ -36,7 +36,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     transform-origin: 177px 178px;
     -webkit-transform-origin: 177px 178px;
-    background: rgba(0, 0, 0, 0) url(http://www.linghit.com/app/jiemeng/Tpl/default/Public/images/cs_main_tbg.png) no-repeat scroll 50% 50% / auto padding-box border-box;
+    background: rgba(0, 0, 0, 0) url(/img/cs_main_tbg.png) no-repeat scroll 50% 50% / auto padding-box border-box;
     font: normal normal normal normal 12px/normal 'Times New Roman';
 }/*#ljms_DIV_2*/
 
@@ -302,7 +302,7 @@
 }/*#ljms_LABEL_15*/
 
 #ljms_INPUT_16 {
-    background-image: url(http://www.linghit.com/app/jiemeng/Tpl/default/Public/My97DatePicker/skin/datePicker.gif);
+    background-image: url(/img/datePicker.gif);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     border-bottom-color: rgb(153, 153, 153);
@@ -334,7 +334,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     transform-origin: 58.5px 12px;
     -webkit-transform-origin: 58.5px 12px;
-    background: rgb(255, 255, 255) url(http://www.linghit.com/app/jiemeng/Tpl/default/Public/My97DatePicker/skin/datePicker.gif) no-repeat scroll 100% 50% / auto padding-box border-box;
+    background: rgb(255, 255, 255) url(/img/datePicker.gif) no-repeat scroll 100% 50% / auto padding-box border-box;
     border: 1px solid rgb(153, 153, 153);
     border-top: 1px solid rgb(153, 153, 153);
     border-right: 1px solid rgb(153, 153, 153);

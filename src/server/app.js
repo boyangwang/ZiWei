@@ -34,6 +34,7 @@ var handlePostZiWeiPan = function(app, req, res) {
         		res.render('notFound');
             }
             else {
+            	console.log(item)
             	res.render('ZiWeiPan', item);
             }
         });
