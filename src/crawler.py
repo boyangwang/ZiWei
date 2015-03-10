@@ -36,21 +36,23 @@ def crawlResponseWithInputs(inputs):
 # 1       8
 # 2       7
 # 3 4  5  6
-def createPanObjectFromInputs(inputs, http=True):
+def createPanObjectFromInputs(inputs, http=True, offline=False):
 	try:
 		name = Pan.getName(inputs)
 		print 'START: ', name
-		driver = DBDriver()
 		
-		results = driver.collection.find({
-			'name': name
-		})
+		if (not offline): 
+			driver = DBDriver()
+		
+			results = driver.collection.find({
+				'name': name
+			})
 
-		# print 'LEN: ', results.limit(1).count()
+			# print 'LEN: ', results.limit(1).count()
 
-		if (results.limit(1).count() >= 1):
-			print 'EXIST: ', name
-			return
+			if (results.limit(1).count() >= 1):
+				print 'EXIST: ', name
+				return
 
 		if (http):	
 			page = crawlResponseWithInputs(inputs)
@@ -69,10 +71,11 @@ def createPanObjectFromInputs(inputs, http=True):
 
 		panObj.initData()
 		jsonObj = panObj.serialize()
-		driver.insert(jsonObj)
+		if (not offline):
+			driver.insert(jsonObj)
+		else:
+			panObj.serializeToFile()
 		print 'DONE: ', name
-		# panObj.serializeToFile()
-
 		return panObj
 	except Exception as e:
 		print 'ERROR: ', Pan.getName(inputs)
@@ -180,10 +183,10 @@ def main():
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	# for inputs in inputsArray:
+	# 	createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True)
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 

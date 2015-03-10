@@ -594,6 +594,7 @@ class Pan(object):
 
 	def setMingSiHua(self):
 		mingSiHua = self.page.find_all(text=re.compile(u'命四化'))
+		
 		mingSiHua = mingSiHua[0]
 		mingSiHua = mingSiHua.next_sibling
 		mingSiHuaTag = mingSiHua
@@ -667,7 +668,7 @@ class Pan(object):
 		yinLiTag = yinLiTag.next_sibling
 		yinLi += '' + yinLiTag.next_sibling.string
 
-		self.data['centerGong']['阴历生日'] = yinLi
+		self.data['centerGong']['阴历生日'] = yinLi.strip()
 
 		yinLiTag = self.page.find(text=re.compile(u'│农历：')).next_sibling
 		for i in range(8):

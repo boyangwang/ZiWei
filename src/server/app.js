@@ -34,6 +34,8 @@ var handlePostZiWeiPan = function(app, req, res) {
         		res.render('notFound');
             }
             else {
+            	
+            	item.data.inputs.name = req.body.name
             	console.log(item)
             	res.render('ZiWeiPan', item);
             }
