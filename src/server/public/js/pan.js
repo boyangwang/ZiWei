@@ -61,7 +61,15 @@ window.setCentDom = function(dom, idx) {
 
 window.goToPan = function(mode) {
 	var inputs = ejs.data.inputs;
+	inputs.mode = mode;
 	console.log(inputs);
+	var form = $('.invisible-form');
+	for (var key in inputs) {
+		form.append( $("<input>")
+               .attr("type", "hidden")
+               .attr("name", key).val(inputs[key]));
+	}
+	form.submit();
 }
 
 setCentDom(null, 0);
