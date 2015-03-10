@@ -550,6 +550,8 @@ class Pan(object):
 	@staticmethod
 	def getIdFromA(aTag):
 		starId = int(aTag['href'][aTag['href'].find('id=') + 3:])
+		if (starId == 64 and (aTag.font['color'] == '#000099' or aTag.font['color'] == '#009999') ):
+			starId = 65
 		return starId
 
 	def cleanUpCenterGong(self):

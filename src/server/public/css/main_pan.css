@@ -919,3 +919,12 @@ outline: none;  /* for firefox 1.5 + */
 	width: 120px;
 	height: 24px;
 }
+
+.list-group-item-info {
+color: #31708f;
+background-color: #d9cdf7;
+}
+
+p.list-group-item {
+	font-size: 14px;
+}

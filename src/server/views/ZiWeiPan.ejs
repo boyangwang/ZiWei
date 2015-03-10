@@ -58,7 +58,7 @@ yearpan
     <table class="lp_tab" id="mainContent">
         <tbody>
             <tr class="lp_ztr" valign="top">
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this, 0)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[0].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[0].redStars[i][0]] %></span>
@@ -95,7 +95,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,1)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[1].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[1].redStars[i][0]] %></span>
@@ -132,7 +132,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,2)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[2].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[2].redStars[i][0]] %></span>
@@ -169,7 +169,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,3)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[3].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[3].redStars[i][0]] %></span>
@@ -208,7 +208,7 @@ yearpan
                 </td>
             </tr>
             <tr class="lp_ztr" valign="top">
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,4)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[4].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[4].redStars[i][0]] %></span>
@@ -248,7 +248,7 @@ yearpan
                 <td rowspan="2" colspan="2" class="cztd" align="center" id="Pcent" style="background-image: url(/img/centerlogin.png); background-position:center; background-repeat: no-repeat;">
                     <div style="width: 100%;position:relative;top:0px;height:252px;background-image:url(/img/lcbg.png)">
                         <canvas id="canvas" style="position:absolute;top:0px;left:0px;z-index:2;" width="298" height="253"></canvas>
-                        <div class="lp_ctab" id="CentTab">
+                        <div class="lp_ctab center-gong" id="CentTab">
                             <li>姓名:<font color="red"><%= data.inputs.name %></font>&nbsp;&nbsp;年龄:<font color="red"><%= data.centerGong.年龄 %></font>&nbsp;&nbsp;<font color="red"><% if (data.inputs.sex == 1) { %>男<% } else { %>女<% } %></font>&nbsp;&nbsp;</li>
                             <li>公历:<%= data.centerGong.阳历生日 %></li>
                             <li>农历:<%= data.centerGong.阴历生日 %></li>
@@ -305,10 +305,10 @@ yearpan
                             <li>子斗在:<span style="color:rgb(253, 3, 3);"><%= data.centerGong.子斗在 %></span>&nbsp;&nbsp;身宫在:<span style="color:rgb(253, 3, 3);"><%= data.centerGong.身宫在 %></span>&nbsp;&nbsp;命宫在:<span style="color:rgb(253, 3, 3);"><%= data.centerGong.命宫在 %></span>
                             </li>
                         </div>
-                        <div id="StarContent" class="StarContent" onclick="ShowCent()"></div>
+                        <div id="StarContent" class="StarContent" ></div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,5)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[5].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[5].redStars[i][0]] %></span>
@@ -347,7 +347,7 @@ yearpan
                 </td>
             </tr>
             <tr class="lp_ztr" valign="top">
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,6)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[6].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[6].redStars[i][0]] %></span>
@@ -384,7 +384,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,7)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[7].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[7].redStars[i][0]] %></span>
@@ -423,7 +423,7 @@ yearpan
                 </td>
             </tr>
             <tr class="lp_ztr" valign="top">
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,8)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[8].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[8].redStars[i][0]] %></span>
@@ -460,7 +460,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,9)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[9].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[9].redStars[i][0]] %></span>
@@ -497,7 +497,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,10)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[10].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[10].redStars[i][0]] %></span>
@@ -534,7 +534,7 @@ yearpan
                         </div>
                     </div>
                 </td>
-                <td class="lp_ztd" align="right" onclick="SetCentDom(this)">
+                <td class="lp_ztd" align="right" onclick="setCentDom(this,11)">
                     <div class="lp_tdiv">
                         <% for (var i=0; i<data.twelveGongs[11].redStars.length; i++) { %>
                         <li><span style="color:#f30000;"><%= starList[data.twelveGongs[11].redStars[i][0]] %></span>
@@ -596,12 +596,21 @@ yearpan
 </div>
 
             	<!-- ENDOF lp_content -->
-				
+			
 			</div>
-
+            <div class='container'>
+            <div class='explanation-div list-group' style='margin-top: 30px; margin-left: 10px;width: 615px;'>
+                <h3 class="list-group-item list-group-item-info">宫中各星注释</h3>
+                
+            </div>
+            <div style='display: none'>
+                <p class="list-group-item list-group-item-danger sample-main">Cras sit amet nibh libero</p>
+                <p class="list-group-item list-group-item-info sample-minor">Cras sit amet nibh libero</p>
+            </div>
+            </div>
             <script src="js/vendor/jquery-1.11.2.min.js"></script>
             <script src="js/vendor/jquery-ui.min.js"></script>
             <script src="js/vendor/bootstrap.min.js"></script>
-            <script src="js/main.js"></script>
+            <script src="js/pan.js"></script>
           </body>
           </html>

@@ -159,8 +159,121 @@ def createInputsArray(a, b):
 					currentInput['mode'] = mode
 					yield currentInput	
 
+def buildStarExplanation():
+	obj = {
+		"紫微": {'zhu': 1, 'explanation': {}},
+		"天机": {'zhu': 1, 'explanation': {}},
+		"太阳": {'zhu': 1, 'explanation': {}},
+		"武曲": {'zhu': 1, 'explanation': {}},
+		"天同": {'zhu': 1, 'explanation': {}},
+		"廉贞": {'zhu': 1, 'explanation': {}},
+		"天府": {'zhu': 1, 'explanation': {}},
+		"太阴": {'zhu': 1, 'explanation': {}},
+		"贪狼": {'zhu': 1, 'explanation': {}},
+		"巨门": {'zhu': 1, 'explanation': {}},
+		"天相": {'zhu': 1, 'explanation': {}},
+		"天梁": {'zhu': 1, 'explanation': {}},
+		"七杀": {'zhu': 1, 'explanation': {}},
+		"破军": {'zhu': 1, 'explanation': {}},
+		"文昌": {'zhu': 0, 'explanation': ''},
+		"文曲": {'zhu': 0, 'explanation': ''},
+		"左辅": {'zhu': 0, 'explanation': ''},
+		"右弼": {'zhu': 0, 'explanation': ''},
+		"天魁": {'zhu': 0, 'explanation': ''},
+		"天钺": {'zhu': 0, 'explanation': ''},
+		"擎羊": {'zhu': 0, 'explanation': ''},
+		"陀罗": {'zhu': 0, 'explanation': ''},
+		"火星": {'zhu': 0, 'explanation': ''},
+		"铃星": {'zhu': 0, 'explanation': ''},
+		"地空": {'zhu': 0, 'explanation': ''},
+		"地劫": {'zhu': 0, 'explanation': ''},
+		"禄存": {'zhu': 0, 'explanation': ''},
+		"天马": {'zhu': 0, 'explanation': ''},
+		"天官": {'zhu': 0, 'explanation': ''},
+		"天福": {'zhu': 0, 'explanation': ''},
+		"天厨": {'zhu': 0, 'explanation': ''},
+		"天刑": {'zhu': 0, 'explanation': ''},
+		"天姚": {'zhu': 0, 'explanation': ''},
+		"解神": {'zhu': 0, 'explanation': ''},
+		"天巫": {'zhu': 0, 'explanation': ''},
+		"天月": {'zhu': 0, 'explanation': ''},
+		"阴煞": {'zhu': 0, 'explanation': ''},
+		"台辅": {'zhu': 0, 'explanation': ''},
+		"封诰": {'zhu': 0, 'explanation': ''},
+		"天空": {'zhu': 0, 'explanation': ''},
+		"天哭": {'zhu': 0, 'explanation': ''},
+		"天虚": {'zhu': 0, 'explanation': ''},
+		"龙池": {'zhu': 0, 'explanation': ''},
+		"凤阁": {'zhu': 0, 'explanation': ''},
+		"红鸾": {'zhu': 0, 'explanation': ''},
+		"天喜": {'zhu': 0, 'explanation': ''},
+		"孤辰": {'zhu': 0, 'explanation': ''},
+		"寡宿": {'zhu': 0, 'explanation': ''},
+		"蜚廉": {'zhu': 0, 'explanation': ''},
+		"破碎": {'zhu': 0, 'explanation': ''},
+		"51": {'zhu': 0, 'explanation': ''},
+		"52": {'zhu': 0, 'explanation': ''},
+		"天德": {'zhu': 0, 'explanation': ''},
+		"月德": {'zhu': 0, 'explanation': ''},
+		"天才": {'zhu': 0, 'explanation': ''},
+		"天寿": {'zhu': 0, 'explanation': ''},
+		"三台": {'zhu': 0, 'explanation': ''},
+		"八座": {'zhu': 0, 'explanation': ''},
+		"恩光": {'zhu': 0, 'explanation': ''},
+		"天贵": {'zhu': 0, 'explanation': ''},
+		"截空": {'zhu': 0, 'explanation': ''},
+		"旬空": {'zhu': 0, 'explanation': ''},
+		"天使": {'zhu': 0, 'explanation': ''},
+		"天伤": {'zhu': 0, 'explanation': ''},
+		"博士": {'zhu': 0, 'explanation': ''},
+		"力士": {'zhu': 0, 'explanation': ''},
+		"青龙": {'zhu': 0, 'explanation': ''},
+		"小耗": {'zhu': 0, 'explanation': ''},
+		"将军": {'zhu': 0, 'explanation': ''},
+		"奏书": {'zhu': 0, 'explanation': ''},
+		"飞廉": {'zhu': 0, 'explanation': ''},
+		"喜神": {'zhu': 0, 'explanation': ''},
+		"病符": {'zhu': 0, 'explanation': ''},
+		"大耗": {'zhu': 0, 'explanation': ''},
+		"伏兵": {'zhu': 0, 'explanation': ''},
+		"官府": {'zhu': 0, 'explanation': ''},
+		"将星": {'zhu': 0, 'explanation': ''},
+		"攀鞍": {'zhu': 0, 'explanation': ''},
+		"岁驿": {'zhu': 0, 'explanation': ''},
+		"息神": {'zhu': 0, 'explanation': ''},
+		"华盖": {'zhu': 0, 'explanation': ''},
+		"劫煞": {'zhu': 0, 'explanation': ''},
+		"灾煞": {'zhu': 0, 'explanation': ''},
+		"天煞": {'zhu': 0, 'explanation': ''},
+		"指背": {'zhu': 0, 'explanation': ''},
+		"咸池": {'zhu': 0, 'explanation': ''},
+		"月煞": {'zhu': 0, 'explanation': ''},
+		"亡神": {'zhu': 0, 'explanation': ''},
+		"岁建": {'zhu': 0, 'explanation': ''},
+		"晦气": {'zhu': 0, 'explanation': ''},
+		"丧门": {'zhu': 0, 'explanation': ''},
+		"贯索": {'zhu': 0, 'explanation': ''},
+		"官符": {'zhu': 0, 'explanation': ''},
+		"小耗": {'zhu': 0, 'explanation': ''},
+		"大耗": {'zhu': 0, 'explanation': ''},
+		"龙德": {'zhu': 0, 'explanation': ''},
+		"白虎": {'zhu': 0, 'explanation': ''},
+		"天德": {'zhu': 0, 'explanation': ''},
+		"吊客": {'zhu': 0, 'explanation': ''},
+		"病符": {'zhu': 0, 'explanation': ''},
+	}
+	for key,value in obj.iteritems():
+		if (obj[key]['zhu'] == 0):
+			obj[key]['explanation'] = key + u'星注释：暂无'
+		else:
+			for gong in [u'身命宫', u'父母宫', u'福德宫', u'田宅宫', u'官禄宫', u'仆役宫', u'迁移宫', u'疾厄宫', u'财帛宫', u'子女宫', u'夫妻宫', u'兄弟宫']:
+				exp = key + u'星在' + gong + u'注释：暂无'
+				obj[key]['explanation'][gong] = exp
+	starExplanation = open('starExplanation.json', 'w')
+	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
+
 def main():
-	
+	buildStarExplanation()
 	inputs = {
 		'y':1990,
 		'm':1,
@@ -170,50 +283,21 @@ def main():
 		'sex':1,
 		'mode':1,
 	}
+
+	# p = Pool(12)
+
+	# time.clock()
 	
-	# starList = readStarList() #createStarList() 
-
-
-
-	# p = Pool(3)
-
-	time.clock()
-	
-	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2000, 1, 1))]
+	# inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
 	# for inputs in inputsArray:
 	# 	createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
-
-	# for y in range(1990, 1992):
-	# 	for m in range(1, 3):
-	# 		for d in range(1, 3):
-	# 			for h in range(0, 24, 2):
-	# 				for sex in range(0, 2):
-	# 					for mode in range(1, 4):
-	# 						inputs['y'] = y
-	# 						inputs['m'] = m
-	# 						inputs['d'] = d
-	# 						inputs['h'] = h
-	# 						inputs['sex'] = sex
-	# 						inputs['mode'] = mode
-	# 						panObj = createPanObjectFromInputs(inputs, http=True)
-	# 						name = panObj.serialize()
-
-	
-
-	# correct = open('1-0-0-1-1-1-1990-out.json', 'r', encoding="utf-8").read()
-	# current = open(name, 'r', encoding="utf-8").read()
-
-	# for i in range(min(len(correct), len(current))):
-	# 	if (correct[i] != current[i]):
-	# 		print 'ERROR: ', i
-	# 		break;
 
 if __name__ == '__main__':
 	main()
