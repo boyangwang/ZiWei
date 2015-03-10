@@ -273,7 +273,7 @@ def buildStarExplanation():
 	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
 
 def main():
-	buildStarExplanation()
+	# buildStarExplanation()
 	inputs = {
 		'y':1990,
 		'm':1,
@@ -282,6 +282,15 @@ def main():
 		'min':0,
 		'sex':1,
 		'mode':1,
+	}
+	inputs = {
+		'y':1990,
+		'm':1,
+		'd':27,
+		'h':0,
+		'min':0,
+		'sex':1,
+		'mode':2,
 	}
 
 	# p = Pool(6)
@@ -292,10 +301,10 @@ def main():
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	# for inputs in inputsArray:
+	# 	createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 

@@ -49,7 +49,7 @@ var handlePostZiWeiPan = function(app, req, res) {
 }
 
 app.post('/ZiWeiPan', handlePostZiWeiPan.bind(null, app));
-app.get('/ZiWeiPan', 'methodNotAllowed');
+app.get('/ZiWeiPan', function(req, res) { res.redirect('/'); });
 
 console.log("Express is listening on port: " + config.port
             + " in " + config.env + " mode");
