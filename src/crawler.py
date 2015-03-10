@@ -284,16 +284,16 @@ def main():
 		'mode':1,
 	}
 
-	# p = Pool(12)
+	# p = Pool(6)
 
-	# time.clock()
+	time.clock()
 	
-	# inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
+	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	# for inputs in inputsArray:
-	# 	createPanObjectFromInputs(inputs)
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 
 	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
