@@ -26,6 +26,7 @@ var handlePostZiWeiPan = function(app, req, res) {
 	// 1. based on req.body, create name string
 	// retrieve pan object, or it doesn't exist
 	var inputs = req.body;
+    console.log(inputs);
 	var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
 	var panObj = null;
 	console.log('name: ', name);

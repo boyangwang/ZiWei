@@ -64,11 +64,19 @@ window.goToPan = function(mode) {
 	inputs.mode = mode;
 	console.log(inputs);
 	var form = $('.invisible-form');
-	for (var key in inputs) {
-		form.append( $("<input>")
-               .attr("type", "hidden")
-               .attr("name", key).val(inputs[key]));
+	var keys = ['y', 'm', 'd', 'h', 'min', 'name', 'sex', 'mode'];
+	for (var i=0; i<keys.length; i++) {
+
+		var key = keys[i]
+		console.log('key: ', key);
+		var input = $("<input>").attr("type", "hidden").attr("name", key).val(inputs[key]);
+		form.append(input);
 	}
+	console.log(form.serializeArray());
+	console.log(form);
+	form.submit(function() {
+		console.log('I\'m submitting!');
+	});
 	form.submit();
 }
 
