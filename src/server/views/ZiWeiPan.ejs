@@ -41,13 +41,14 @@
 
             		<div id="ljms2_DIV_2">
             			<div id="ljms2_DIV_5" style="margin: 0px 0px 20px 10px;">
-            				<img src="/img/<% if (data.inputs.mode == 1) { %>
-lifepan
+<% if (data.inputs.mode == 1) { %>
+    <label>当前排盘：</label><img src="/img/lifepan.png" /><label>切换到：</label><img src="/img/daxianpan.png" style='cursor: pointer;' onclick='goToPan(2)'/><img src="/img/yearpan.png" style='cursor: pointer;' onclick='goToPan(3)'  />
 <% } else if (data.inputs.mode == 2) { %>
-daxianpan
+    <label>当前排盘：</label><img src="/img/daxianpan.png" /><label>切换到：</label><img src="/img/lifepan.png"  style='cursor: pointer;' onclick='goToPan(1)' /><img src="/img/yearpan.png" style='cursor: pointer;' onclick='goToPan(3)'  />
 <% } else if (data.inputs.mode == 3) { %>
-yearpan
-<% } %>.png" />
+    <label>当前排盘：</label><img src="/img/yearpan.png"/><label>切换到：</label><img src="/img/lifepan.png" style='cursor: pointer;' onclick='goToPan(1)'  /><img src="/img/daxianpan.png" style='cursor: pointer;' onclick='goToPan(2)' />
+<% } %>
+            				
             			</div>
             			<div id="ljms2_DIV_11">
             			</div>
@@ -585,13 +586,6 @@ yearpan
     <div id="lp_fj" class="lp_fj">
         <div class="close1" onclick="hideHj()"></div>
         <div id="lp_hjInfo"></div>
-    </div>
-    <div id="DialogDiv" class="DialogDiv" style="display:none">
-        <div class="test1">
-            <div class="test2"><span id="btnClose" class="btnClose" onclick="closeDiv()"></span>
-                <br>
-            </div>
-        </div>
     </div>
 </div>
 

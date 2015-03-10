@@ -59,4 +59,9 @@ window.setCentDom = function(dom, idx) {
 	}
 }
 
+window.goToPan = function(mode) {
+	var inputs = ejs.data.inputs;
+	console.log(inputs);
+}
+
 setCentDom(null, 0);
