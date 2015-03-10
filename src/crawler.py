@@ -264,16 +264,16 @@ def buildStarExplanation():
 	}
 	for key,value in obj.iteritems():
 		if (obj[key]['zhu'] == 0):
-			obj[key]['explanation'] = key + u'星注释：暂无'
+			obj[key]['explanation'] = key + u'星释义：暂无'
 		else:
 			for gong in [u'身命宫', u'父母宫', u'福德宫', u'田宅宫', u'官禄宫', u'仆役宫', u'迁移宫', u'疾厄宫', u'财帛宫', u'子女宫', u'夫妻宫', u'兄弟宫']:
-				exp = key + u'星在' + gong + u'注释：暂无'
+				exp = key + u'星位于' + gong + u'：暂无'
 				obj[key]['explanation'][gong] = exp
 	starExplanation = open('starExplanation.json', 'w')
 	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
 
 def main():
-	# buildStarExplanation()
+	buildStarExplanation()
 	inputs = {
 		'y':1990,
 		'm':1,
@@ -301,10 +301,10 @@ def main():
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	# for inputs in inputsArray:
-	# 	createPanObjectFromInputs(inputs)
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 
