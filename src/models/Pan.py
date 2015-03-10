@@ -19,7 +19,7 @@ from pprint import pprint
 	                          3 (2)
 '''
 class Pan(object):
-	'''missing stars: 31, 51,52,61'''
+	'''missing stars: 31, 51,52,61, 博士天伤都是64'''
 	STARS_LIST = None
 	HTML_LINE_SEPARATOR = '<br>'
 

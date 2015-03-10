@@ -232,7 +232,7 @@ outline: none;  /* for firefox 1.5 + */
 /*命盘样式*/
 .lp_content{
 	float: left;
-	width: 600px;
+	width: 610px;
 	position: relative;
 }
 .lp_BgDiv{
@@ -317,6 +317,7 @@ outline: none;  /* for firefox 1.5 + */
 	height: 57px;
 	width: 100%;
 	overflow: hidden;
+	font-size: 13px;
 }
 .lp_bdiv{
 	padding-top: 35px;
@@ -327,6 +328,11 @@ outline: none;  /* for firefox 1.5 + */
 	float: right;
 	display: block;
 	height: 100%;
+}
+.lp_tdiv li span {
+	/*width: 14px !important;
+	max-width: 14px;*/
+	font-size: 13px;
 }
 .lp_star{
 	height: 31px;
