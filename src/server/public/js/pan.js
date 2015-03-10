@@ -27,6 +27,7 @@ window.setCentDom = function(dom, idx) {
 	for (var i=0; i<gong.redStars.length; i++) {
 		var s = gong.redStars[i];
 		var expP = sampleMain.clone();
+		expP.removeClass('sample-main');
 		var starNumber = s[0];
 		var starName = starList[starNumber];
 		console.log(starNumber);
@@ -46,6 +47,7 @@ window.setCentDom = function(dom, idx) {
 	for (var i=0; i<allMinorStars.length; i++) {
 		var s = allMinorStars[i];
 		var expP = sampleMinor.clone();
+		expP.removeClass('sample-minor');
 		var starNumber = s;
 		var starName = starList[starNumber];
 		console.log(starNumber);
