@@ -297,7 +297,7 @@ def main():
 
 	time.clock()
 	
-	inputsArray = [input for input in createInputsArray(date(1990, 2, 1), date(1991, 1, 1))]
+	inputsArray = [input for input in createInputsArray(date(1991, 1, 1), date(1992, 1, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
