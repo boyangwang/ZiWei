@@ -935,7 +935,3 @@ outline: none;  /* for firefox 1.5 + */
 color: #31708f;
 background-color: #d9cdf7;
 }
-
-p.list-group-item {
-	font-size: 14px;
-}
