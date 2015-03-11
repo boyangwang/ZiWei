@@ -41,7 +41,7 @@ window.setCentDom = function(dom, idx) {
 		var expText = expTexts[gongName];
 		console.log(expTexts);
 		console.log(expText);
-		expP.text(expText);
+		expP.html(expText);
 		expDiv.append(expP);
 	}
 	for (var i=0; i<allMinorStars.length; i++) {
@@ -54,7 +54,7 @@ window.setCentDom = function(dom, idx) {
 		console.log(starName);
 
 		var expText = starExplanations[starName]['explanation'];
-		expP.text(expText);
+		expP.html(expText);
 		expDiv.append(expP);	
 	}
 }
