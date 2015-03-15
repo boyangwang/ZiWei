@@ -242,7 +242,6 @@ outline: none;  /* for firefox 1.5 + */
 
 /*命盘样式*/
 .lp_content{
-	float: left;
 	width: 610px;
 	position: relative;
 }

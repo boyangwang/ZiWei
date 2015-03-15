@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>缘中秀在线排盘系统</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -40,7 +40,7 @@
             <div class="container" style="margin-top: 80px;">
 
             		<div id="ljms2_DIV_2">
-            			<div id="ljms2_DIV_5" style="margin: 0px 0px 10px 10px;">
+            			<div id="ljms2_DIV_5" style="margin: 10px auto; width: 590px;">
 <% if (data.inputs.mode == 1) { %>
     <label>当前排盘：</label><img src="/img/lifepan.png" /><br /><label>切换到：&nbsp;&nbsp;&nbsp;&nbsp;</label><img src="/img/daxianpan.png" style='cursor: pointer;' onclick='goToPan(2)'/><img src="/img/yearpan.png" style='cursor: pointer;' onclick='goToPan(3)'  />
 <% } else if (data.inputs.mode == 2) { %>
@@ -58,7 +58,7 @@
             		</div>
             	<!-- STARTOF lp_content -->
 
-<div class="lp_content">
+<div class="lp_content" style="margin: 10px auto;">
     <table class="lp_tab" id="mainContent">
         <tbody>
             <tr class="lp_ztr" valign="top">
@@ -599,7 +599,7 @@
 			
 			</div>
             <div class='container'>
-            <div class='explanation-div list-group' style='margin-top: 30px; margin-left: 10px;width: 615px;'>
+            <div class='explanation-div list-group' style='margin: 30px auto;width: 600px;'>
                 <h3 class="list-group-item list-group-item-info">命盘解析</h3>
                 
             </div>
