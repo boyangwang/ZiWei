@@ -13,7 +13,7 @@ mongodb.Db.connect('mongodb://localhost:27017/ziwei', function(err, db) {
 
 var express = require("express");
 var app = express();
-app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('body-parser').urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.set('view engine', 'ejs');
@@ -51,7 +51,7 @@ var handlePostZiWeiPan = function(app, req, res) {
 app.post('/ZiWeiPan', handlePostZiWeiPan.bind(null, app));
 app.get('/ZiWeiPan', function(req, res) { res.redirect('/'); });
 app.get('/jiexi', function(req, res) { res.render('jiexi'); });
-app.post('/jiexi', function(req, res) { 
+app.post('/jiexi', function(req, res) {
     console.log(req.body);
     if (req && req.body && req.body.password == 'password') {
         res.status(200).json(starExplanation);
@@ -60,6 +60,11 @@ app.post('/jiexi', function(req, res) {
         res.status(401).json({});
     }
 });
+app.put('/jiexi', function(req, res) {
+    console.log(req.body);
+    res.status(200).json({});
+});
+
 
 console.log("Express is listening on port: " + config.port
             + " in " + config.env + " mode");

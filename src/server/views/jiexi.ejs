@@ -13,9 +13,29 @@
   <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <style>
+    h3 {
+      font-weight: bold;
+    }
     body {
       padding-top: 50px;
       padding-bottom: 20px;
+    }
+    .sub-edit-div {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .sub-major-edit-div {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .indent {
+      padding-left: 20px;
+    }
+
+    .sub-edit-div .sub-edit-input {
+      margin-left: 15px;
     }
   </style>
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -54,9 +74,10 @@
               </div>
               </div>
               <div class='edit-div' style="display: none;">
-              <textarea class='star-explanation-edit' cols="120" rows="30"></textarea>
+              
               <div class="txt-cntr clr submit-button">
-                  <button class="btn btn-default submit-edit" style="margin-top: 6px;">提交修改</button>
+                  <button class="btn btn-lg btn-default submit-edit" style="font-weight: bold;margin-top: 6px;">提交修改</button>
+                  <span style="color: red;">注：释义中不可包含双引号(")以及回车。如需在释义中换行可使用<i>&lt;br&gt;</i></span>
               </div>
               </div>
             </div>
@@ -64,39 +85,6 @@
             <script src="js/vendor/jquery-1.11.2.min.js"></script>
             <script src="js/vendor/jquery-ui.min.js"></script>
             <script src="js/vendor/bootstrap.min.js"></script>
-            <script>
-                $('#login-form').submit(function(e) {
-                    console.log($(this).serializeArray());
-                    $.ajax('/jiexi', {
-                        data: {
-                          password: $(this).serializeArray()[0].value
-                        },
-                        method: 'POST',
-                        success: function(res) {
-                          console.log(res);
-                          window.starExplanation = res;
-                          $('.star-explanation-edit').val(JSON.stringify(res, null, 2));
-                          $('.login-div').hide();
-                          $('.edit-div').show();
-
-                        },
-                        error: function(res) {
-                          console.log(res);
-                          alert('密码错误！');
-                          
-                        }
-                    });
-                    console.log('submit handler done');
-                    return false;
-                });
-                
-                $('.submit-edit').click(function(e) {
-                  $.ajax('/jiexi', {
-                    
-                  }
-                })
-                console.log('handler done');
-
-              </script>
+            <script type="text/javascript" src="js/jiexi.js"></script>
         </body>
         </html>
