@@ -23,7 +23,7 @@
   <link type="text/css" rel="stylesheet" href="css/style_pan.css">
   <link type="text/css" rel="stylesheet" href="css/style_down_pan.css">
   <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-  <script>var ejs = <%- JSON.stringify(locals); %></script>
+  <script><% for (var i=0; i<12; i++) { var gong = locals.data.twelveGongs[i]; if (gong.gongName.indexOf('身夫') != -1) { gong.gongName = gong.gongName.replace('身夫', '夫妻'); } if (gong.gongName.indexOf('官禄') != -1) { gong.gongName = gong.gongName.replace('官禄', '事业'); } if (gong.gongName.indexOf('命宫') != -1) { gong.gongName = gong.gongName.replace('命宫', '身命'); } } %> var ejs = <%- JSON.stringify(locals); %></script>
 </head>
 <body style="background-image: url(/img/bg.jpg);margin: 0px;">
         <!--[if lt IE 8]>

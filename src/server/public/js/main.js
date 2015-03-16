@@ -6,7 +6,7 @@ $( ".datepicker" ).datepicker({
 	changeMonth: true,
 	changeYear: true,
 	constrainInput: true,
-	defaultDate: '1991-01-01',
+	defaultDate: '1990-01-01',
 });
 console.log('datepicker init done');
 var Lifesub = function(a) {
