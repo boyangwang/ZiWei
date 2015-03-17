@@ -30,7 +30,6 @@ def crawlResponseWithInputs(inputs):
 	req = urllib2.Request(url, form_data_encoded)
 	res = urllib2.urlopen(req)
 	res = res.read()
-	print res
 	return res
 
 # 0 10 11 9
@@ -302,10 +301,10 @@ def main():
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	# for inputs in inputsArray:
-		# createPanObjectFromInputs(inputs)
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 

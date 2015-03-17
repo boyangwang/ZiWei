@@ -171,10 +171,17 @@ class Pan(object):
 			bars.append(bar3)
 			bars.append(bar4)
 		elif (index in [1,2,3,7,9,10,11]):
+
 			for el in bars[0].next_siblings:
 				if (el.string.find(u'│') != -1):
 					bars[0] = el
 					break
+
+			if (find_nth_dbg(bars[0].string, u'│', 2) != -1):
+				# this one contains 2 bars. split
+				secondIdx = find_nth(bars[0].string, u'│', 2)
+				bars[0].insert_after('<span>'+ bars[0].string[secondIdx:] +'</span>')
+				bars[0].string = bars[0].string[:secondIdx]
 			# for el in bars[1].next_siblings:
 			# 	if (el.string.find(u'│') != -1):
 			# 		bars[1] = el
@@ -282,9 +289,11 @@ class Pan(object):
 		# bar2 = bars[1]
 		gong = self.data['twelveGongs'][gongIndex]
 
-		
+		print 'gongIndex: ', gongIndex, ' bar1: ', bar1
 		current = bar1.next_sibling
+
 		while (current.string.find(u'│') == -1):
+			
 			if (current.font['color'] == '#ff0000'):
 				# print 'red'
 				gong['redStars'].append([Pan.getIdFromA(current), '', ''])
@@ -709,6 +718,20 @@ class Pan(object):
 def find_nth(haystack, needle, n):
     start = haystack.find(needle)
     while start >= 0 and n > 1:
+
         start = haystack.find(needle, start+len(needle))
+        n -= 1
+    return start
+
+def find_nth_dbg(haystack, needle, n):
+	
+    start = haystack.find(needle)
+    print haystack, needle, n
+    print start
+    while start >= 0 and n > 1:
+    	print haystack
+    	print needle
+        start = haystack.find(needle, start+len(needle))
+        print start
         n -= 1
     return start
