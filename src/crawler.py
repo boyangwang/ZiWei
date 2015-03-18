@@ -301,10 +301,10 @@ def main():
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	# for inputs in inputsArray:
-	# 	createPanObjectFromInputs(inputs)
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 

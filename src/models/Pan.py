@@ -587,9 +587,9 @@ class Pan(object):
 		self.setBirthday()
 		self.setPanLei()
 
-	def setSCBZ():
-		scbz = self.page.find_all(text=re.compile(u'乾造')).next_sibling
-		self.data['centerGong']['八字'] = unicode(scbz.string)
+	def setSCBZ(self):
+		scbz = self.page.find_all(text=re.compile(u'乾造'))[0].next_sibling
+		self.data['centerGong']['八字'] = unicode(scbz.string.strip())
 
 
 	def setJu(self):
