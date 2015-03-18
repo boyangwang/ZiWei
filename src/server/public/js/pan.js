@@ -65,7 +65,7 @@ window.setCentDom = function(dom, idx) {
         var s = gong.cyanStars[i];
 
         var starNumber = parseInt(s);
-        if (starNumber == NaN) {
+        if (isNaN(starNumber)) {
             var starName = s;    
         }
         else {
