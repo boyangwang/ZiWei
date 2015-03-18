@@ -12,7 +12,7 @@ window.setCentDom = function(dom, idx) {
 	allMinorStars = allMinorStars.concat(gong.magentaStars);
 	allMinorStars = allMinorStars.concat(gong.brownStars);
 	allMinorStars = allMinorStars.map(function(currentValue) {return currentValue[0]});
-	allMinorStars = allMinorStars.concat(gong.cyanStars);
+	// allMinorStars = allMinorStars.concat(gong.cyanStars);
 	allMinorStars = allMinorStars.concat(gong.blueStars);
 	
 	console.log('allMinorStars: ', allMinorStars);
@@ -57,6 +57,28 @@ window.setCentDom = function(dom, idx) {
 		expP.html(expText);
 		expDiv.append(expP);	
 	}
+
+    for (var i=0; i<gong.cyanStars.length; i++) {
+        
+        var expP = sampleMinor.clone();
+        expP.removeClass('sample-minor');
+        var s = gong.cyanStars[i];
+
+        var starNumber = parseInt(s);
+        if (starNumber == NaN) {
+            var starName = s;    
+        }
+        else {
+            var starName = starList[starNumber];    
+        }
+        
+        console.log(starNumber);
+        console.log(starName);
+
+        var expText = starExplanations[starName]['explanation'];
+        expP.html(expText);
+        expDiv.append(expP);
+    }
 }
 
 window.goToPan = function(mode) {

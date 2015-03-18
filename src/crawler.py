@@ -284,12 +284,12 @@ def main():
 		'mode':1,
 	}
 	inputs = {
-		'y':1991,
-		'm':2,
-		'd':21,
-		'h':22,
+		'y':1990,
+		'm':1,
+		'd':12,
+		'h':0,
 		'min':0,
-		'sex':0,
+		'sex':1,
 		'mode':1,
 	}
 
@@ -297,14 +297,14 @@ def main():
 
 	time.clock()
 	
-	inputsArray = [input for input in createInputsArray(date(1991, 1, 1), date(1992, 1, 1))]
+	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	# for inputs in inputsArray:
+	# 	createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 
 	print 'Elapsed time: ' + str(time.clock())
 

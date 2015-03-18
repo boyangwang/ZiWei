@@ -108,7 +108,7 @@ class Pan(object):
 			currentGong['stage'] = ''
 			
 			cyanStar = self.page.find('font', color='#009999').parent
-			cyanStarId = Pan.getIdFromA(cyanStar)
+			cyanStarId = Pan.getTextFromA(cyanStar) #Pan.getIdFromA(cyanStar)
 			currentGong['cyanStars'].append(cyanStarId)
 			cyanStar.extract()
 			if (i >= 4):
@@ -562,6 +562,10 @@ class Pan(object):
 		if (starId == 64 and (aTag.font['color'] == '#000099' or aTag.font['color'] == '#009999') ):
 			starId = 65
 		return starId
+	@staticmethod
+	def getTextFromA(aTag):
+		starText = unicode(aTag.find('font', color='#009999').string)
+		return starText
 
 	def cleanUpCenterGong(self):
 		self.page.find_all('font', color='#009999')[6].decompose()
