@@ -177,7 +177,7 @@ class Pan(object):
 					bars[0] = el
 					break
 
-			if (find_nth_dbg(bars[0].string, u'│', 2) != -1):
+			if (find_nth(bars[0].string, u'│', 2) != -1):
 				# this one contains 2 bars. split
 				secondIdx = find_nth(bars[0].string, u'│', 2)
 				bars[0].insert_after('<span>'+ bars[0].string[secondIdx:] +'</span>')
@@ -289,7 +289,6 @@ class Pan(object):
 		# bar2 = bars[1]
 		gong = self.data['twelveGongs'][gongIndex]
 
-		print 'gongIndex: ', gongIndex, ' bar1: ', bar1
 		current = bar1.next_sibling
 
 		while (current.string.find(u'│') == -1):
@@ -588,7 +587,10 @@ class Pan(object):
 		self.setPanLei()
 
 	def setSCBZ(self):
-		scbz = self.page.find_all(text=re.compile(u'乾造'))[0].next_sibling
+		scbz = self.page.find_all(text=re.compile(u'造：'))[0]
+		print scbz.string
+		scbz = scbz.next_sibling
+		print scbz.string
 		self.data['centerGong']['八字'] = unicode(scbz.string.strip())
 
 

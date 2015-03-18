@@ -84,7 +84,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
 		# traceback.print_tb(sys.exc_info()[3], None, errlog)
 		traceback.print_exc(None, errlog)
-
+		errlog.write(page)
 		return None
 
 def createStarList():
@@ -157,7 +157,7 @@ def createInputsArray(a, b):
 					currentInput['h'] = h
 					currentInput['sex'] = sex
 					currentInput['mode'] = mode
-					yield currentInput	
+					yield currentInput
 
 def buildStarExplanation():
 	obj = {
@@ -286,7 +286,7 @@ def main():
 	inputs = {
 		'y':1990,
 		'm':1,
-		'd':12,
+		'd':1,
 		'h':0,
 		'min':0,
 		'sex':1,
