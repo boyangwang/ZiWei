@@ -576,6 +576,7 @@ class Pan(object):
 
 
 	def setCenterGong(self):
+		self.setSCBZ()
 		self.setMingSiHua()
 		self.setAge()
 		self.setMingGongZaiShenGongZai()
@@ -585,6 +586,11 @@ class Pan(object):
 		self.setJu()
 		self.setBirthday()
 		self.setPanLei()
+
+	def setSCBZ():
+		scbz = self.page.find_all(text=re.compile(u'乾造')).next_sibling
+		self.data['centerGong']['八字'] = unicode(scbz.string)
+
 
 	def setJu(self):
 		ju = self.page.find_all(text=re.compile(u'局'))
