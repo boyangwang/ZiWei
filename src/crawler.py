@@ -37,12 +37,13 @@ def crawlResponseWithInputs(inputs):
 # 2       7
 # 3 4  5  6
 def createPanObjectFromInputs(inputs, http=True, offline=False):
+	page = ''
 	try:
 		name = Pan.getName(inputs)
 		print 'START: ', name
 		
 		if (not offline): 
-			driver = DBDriver()
+			driver = DBDriver(host='128.199.124.194')
 		
 			results = driver.collection.find({
 				'name': name
@@ -297,7 +298,7 @@ def main():
 
 	time.clock()
 	
-	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1990, 2, 1))]
+	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1991, 2, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
