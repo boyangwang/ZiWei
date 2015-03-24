@@ -34,6 +34,7 @@ window.setCentDom = function(dom, idx) {
 		console.log(starName);
 		var expTexts = starExplanations[starName]['explanation'];
 		var gongName = gong.gongName;
+        
 		if (gongName.indexOf('宫') == -1) {
 			gongName += '宫';
 		}
