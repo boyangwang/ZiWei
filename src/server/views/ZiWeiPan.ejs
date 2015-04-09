@@ -254,7 +254,7 @@
                         <canvas id="canvas" style="position:absolute;top:0px;left:0px;z-index:2;" width="298" height="253"></canvas>
                         <div class="lp_ctab center-gong" id="CentTab">
                             <li>姓名:<font color="red"><%= data.inputs.name %></font>&nbsp;&nbsp;年龄:<font color="red"><%= data.centerGong.年龄 %></font>&nbsp;&nbsp;<font color="red"><% if (data.inputs.sex == 1) { %>男<% } else { %>女<% } %></font>&nbsp;&nbsp;</li>
-                            <li>公历:<%= data.centerGong.阳历生日 %></li>
+                            <li class="solar-birthday">公历:<%= data.centerGong.阳历生日 %></li>
                             <li>农历:<%= data.centerGong.阴历生日 %></li>
                             <!-- <li class="lp_centdiv">
                                 <div class="lp_bzdiv">

@@ -318,6 +318,11 @@ for (var i=0; i<ejs.data.twelveGongs.length; i++) {
 }
 
 
+var solarBirthday = $('.solar-birthday').html();
+var solarBirthdayBefore = solarBirthday.substring(0, solarBirthday.indexOf('日') + 1);
+var solarBirthdayAfter = solarBirthday.substring(solarBirthday.indexOf('时'));
+$('.solar-birthday').html(solarBirthdayBefore + window.ejs.data.inputs.h + solarBirthdayAfter);
+
 inq(ejs.data.inputs);
 insertSCBZ();
 
