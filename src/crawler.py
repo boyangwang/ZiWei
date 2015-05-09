@@ -36,6 +36,19 @@ def crawlResponseWithInputs(inputs):
 # 1       8
 # 2       7
 # 3 4  5  6
+
+def isInvalid(pans):
+	for pan in pans:
+		print pan
+		tg = pan['data']['twelveGongs']
+		for gong in tg:
+			for starType in ['redStars', 'brownStars', 'magentaStars']:
+				for star in gong[starType]:
+					if (star[1] not in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷'] or star[2] not in [u'忌', u'科', u'禄', u'权']):
+						return True
+	return False
+
+
 def createPanObjectFromInputs(inputs, http=True, offline=False):
 	page = ''
 	try:
@@ -43,7 +56,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 		print 'START: ', name
 		
 		if (not offline): 
-			driver = DBDriver(host='128.199.124.194')
+			driver = DBDriver(host='localhost')
 		
 			results = driver.collection.find({
 				'name': name
@@ -51,9 +64,14 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 
 			# print 'LEN: ', results.limit(1).count()
 
+
 			if (results.limit(1).count() >= 1):
 				print 'EXIST: ', name
-				return
+				if (isInvalid(results)):
+					print 'EXIST and VALID: ', name
+					return
+				else:
+					print 'INVALID! redo...'
 
 		if (http):	
 			page = crawlResponseWithInputs(inputs)
@@ -274,23 +292,14 @@ def buildStarExplanation():
 	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
 
 def main():
-	buildStarExplanation()
+	# buildStarExplanation()
 	inputs = {
 		'y':1990,
-		'm':1,
-		'd':1,
-		'h':0,
+		'm':9,
+		'd':10,
+		'h':12,
 		'min':0,
-		'sex':1,
-		'mode':1,
-	}
-	inputs = {
-		'y':1990,
-		'm':1,
-		'd':1,
-		'h':0,
-		'min':0,
-		'sex':1,
+		'sex':0,
 		'mode':1,
 	}
 
@@ -298,15 +307,15 @@ def main():
 
 	time.clock()
 	
-	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1991, 2, 1))]
+	# inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(1991, 2, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	for inputs in inputsArray:
-		createPanObjectFromInputs(inputs)
+	# for inputs in inputsArray:
+		# createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
-
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
+	# print panObj
 	print 'Elapsed time: ' + str(time.clock())
 
 if __name__ == '__main__':

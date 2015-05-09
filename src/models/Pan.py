@@ -17,6 +17,9 @@ from pprint import pprint
 	                          12
 	                          2
 	                          3 (2)
+
+亮度：庙、旺、利、得、平、落、陷
+四化飞星：忌科禄权
 '''
 class Pan(object):
 	'''missing stars: 31, 51,52,61, 博士天伤都是64'''
@@ -30,7 +33,7 @@ class Pan(object):
 	
 	def serializeToFile(self):
 		jsonFile = open('data/' + self.name, 'w', encoding="utf-8")
-		jsonFile.write(json.dumps(self.serialize(), ensure_ascii=False))
+		jsonFile.write(json.dumps(self.serialize(), ensure_ascii=False, indent=2))
 		return self.name
 
 	def serialize(self):	
@@ -383,68 +386,68 @@ class Pan(object):
 		line31 = unicode(Pan.getNthLineFromPage(str(self.page), Pan.HTML_LINE_SEPARATOR, 31))
 
 		for i in range(5, 5 + 9):
-			if (line6[i] != u'　'):
+			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line6[i]
 				Pan.setNthStarBrightnessOfGong(i - 5, line6[i], twelveGongs[0])
 		for i in range(15, 15 + 9):
-			if (line6[i] != u'　'):
+			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line6[i]
 				Pan.setNthStarBrightnessOfGong(i - 15, line6[i], twelveGongs[1])
 		for i in range(25, 25 + 9):
-			if (line6[i] != u'　'):
+			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line6[i]
 				Pan.setNthStarBrightnessOfGong(i - 25, line6[i], twelveGongs[2])
 		for i in range(35, 35 + 9):
-			if (line6[i] != u'　'):
+			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line6[i]
 				Pan.setNthStarBrightnessOfGong(i - 35, line6[i], twelveGongs[3])
 
 		for i in range(5, 5 + 9):
-			if (line14[i] != u'　'):
+			if (line14[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line14[i]
 				Pan.setNthStarBrightnessOfGong(i - 5, line14[i], twelveGongs[4])
 		index = find_nth(line14, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
-			if (line14[i] != u'　'):
+			if (line14[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				Pan.setNthStarBrightnessOfGong(i - index, line14[i], twelveGongs[5])
 		
 		for i in range(5, 5 + 9):
-			if (line22[i] != u'　'):
+			if (line22[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line14[i]
 				Pan.setNthStarBrightnessOfGong(i - 5, line22[i], twelveGongs[6])
 		index = find_nth(line22, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
-			if (line22[i] != u'　'):
+			if (line22[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				Pan.setNthStarBrightnessOfGong(i - index, line22[i], twelveGongs[7])
 		
 
 		for i in range(5, 5 + 9):
-			if (line30[i] != u'　'):
+			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line30[i]
 				Pan.setNthStarBrightnessOfGong(i - 5, line30[i], twelveGongs[8])
 		for i in range(15, 15 + 9):
-			if (line30[i] != u'　'):
+			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line30[i]
 				Pan.setNthStarBrightnessOfGong(i - 15, line30[i], twelveGongs[9])
 		for i in range(25, 25 + 9):
-			if (line30[i] != u'　'):
+			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line30[i]
 				Pan.setNthStarBrightnessOfGong(i - 25, line30[i], twelveGongs[10])
 		for i in range(35, 35 + 9):
-			if (line30[i] != u'　'):
+			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
 				# print i
 				# print line30[i]
 				Pan.setNthStarBrightnessOfGong(i - 35, line30[i], twelveGongs[11])
@@ -461,73 +464,73 @@ class Pan(object):
 		# Pan.printLineChar(line7Cleaned)
 		# Pan.printLineChar(line15Cleaned)
 		# Pan.printLineChar(line23Cleaned)
-		# Pan.printLineChar(line31Cleaned)
+		Pan.printLineChar(line31Cleaned)
 		for i in range(5, 5 + 9):
-			if (line7Cleaned[i] != u'　'):
+			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line7Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line7Cleaned[i], twelveGongs[0])
 		for i in range(15, 15 + 9):
-			if (line7Cleaned[i] != u'　'):
+			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line7Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 15, line7Cleaned[i], twelveGongs[1])
 		for i in range(25, 25 + 9):
-			if (line7Cleaned[i] != u'　'):
+			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line7Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 25, line7Cleaned[i], twelveGongs[2])
 		for i in range(35, 35 + 9):
-			if (line7Cleaned[i] != u'　'):
+			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line7Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 35, line7Cleaned[i], twelveGongs[3])
 
 		for i in range(5, 5 + 9):
-			if (line15Cleaned[i] != u'　'):
+			if (line15Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line15Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line15Cleaned[i], twelveGongs[4])
 		index = find_nth(line15Cleaned, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
-			if (line15Cleaned[i] != u'　'):
+			if (line15Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				Pan.setNthStarSecondBrightnessOfGong(i - index, line15Cleaned[i], twelveGongs[5])
 
 
 		for i in range(5, 5 + 9):
-			if (line23Cleaned[i] != u'　'):
+			if (line23Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				# print line23Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line23Cleaned[i], twelveGongs[6])
 		index = find_nth(line23Cleaned, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
-			if (line23Cleaned[i] != u'　'):
+			if (line23Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
 				Pan.setNthStarSecondBrightnessOfGong(i - index, line23Cleaned[i], twelveGongs[7])
 
 
 		for i in range(5, 5 + 9):
-			if (line31Cleaned[i] != u'　'):
-				# print i
-				# print line31Cleaned[i]
+			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
+				print i
+				print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line31Cleaned[i], twelveGongs[8])
 		for i in range(15, 15 + 9):
-			if (line31Cleaned[i] != u'　'):
-				# print i
-				# print line31Cleaned[i]
+			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
+				print i
+				print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 15, line31Cleaned[i], twelveGongs[9])
 		for i in range(25, 25 + 9):
-			if (line31Cleaned[i] != u'　'):
-				# print i
-				# print line31Cleaned[i]
+			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
+				print i
+				print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 25, line31Cleaned[i], twelveGongs[10])
 		for i in range(35, 35 + 9):
-			if (line31Cleaned[i] != u'　'):
-				# print i
-				# print line31Cleaned[i]
+			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
+				print i
+				print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 35, line31Cleaned[i], twelveGongs[11])
 
 
