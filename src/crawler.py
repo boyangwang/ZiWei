@@ -67,7 +67,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 
 			if (results.limit(1).count() >= 1):
 				print 'EXIST: ', name
-				if (!isInvalid(results)):
+				if (not isInvalid(results)):
 					print 'EXIST and VALID: ', name
 					return
 				else:
@@ -304,7 +304,7 @@ def main():
 		'd':10,
 		'h':12,
 		'min':0,
-		'sex':0,
+		'sex':1,
 		'mode':1,
 	}
 
