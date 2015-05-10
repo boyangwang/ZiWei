@@ -319,7 +319,7 @@ def main():
 	#for inputs in inputsArray:
 	#	createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 	# print panObj
 	print 'Elapsed time: ' + str(time.clock())
 

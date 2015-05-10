@@ -90,7 +90,18 @@ class Pan(object):
 		jsonFile.write(lines)
 		return lines
 
+	def setHTMLSeparator(self):
+		pageStr = str(self.page)
+		linkIdx = pageStr.find('<font color="blue">http://www.zhycw.com</font>') + len('<font color="blue">http://www.zhycw.com</font>')
+		openBracketIdx = pageStr.find('<', linkIdx)
+		closeBracketIdx = pageStr.find('>', linkIdx)
+		separator = pageStr[openBracketIdx:closeBracketIdx+1]
+		print 'SEPARATOR: ' + separator + '\n'
+		Pan.HTML_LINE_SEPARATOR = separator
+		return separator
+
 	def initData(self):
+		self.setHTMLSeparator()
 		self.printLines()
 		self.setCenterGong()
 		self.cleanUpCenterGong()
