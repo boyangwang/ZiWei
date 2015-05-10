@@ -98,6 +98,8 @@ class Pan(object):
 		separator = pageStr[openBracketIdx:closeBracketIdx+1]
 		print 'SEPARATOR: ' + separator + '\n'
 		Pan.HTML_LINE_SEPARATOR = separator
+		if (separator == '<br/>'):
+			self.page.br.extract()
 		return separator
 
 	def initData(self):

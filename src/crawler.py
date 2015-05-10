@@ -44,7 +44,7 @@ def isInvalid(pans):
 		for gong in tg:
 			for starType in ['redStars', 'brownStars', 'magentaStars']:
 				for star in gong[starType]:
-					if (star[1] not in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷'] or star[2] not in [u'忌', u'科', u'禄', u'权']):
+					if (star[1] not in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷', ''] or star[2] not in [u'忌', u'科', u'禄', u'权', '']):
 						return True
 	return False
 
