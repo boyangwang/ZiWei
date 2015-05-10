@@ -375,6 +375,8 @@ class Pan(object):
 	''' n from 0 '''
 	@staticmethod
 	def setNthStarBrightnessOfGong(n, brightness, gong):
+		if Pan.HTML_LINE_SEPARATOR == '<br/>':
+			n = n -1
 		if (n < len(gong['redStars'])):
 			gong['redStars'][n][1] = brightness
 		elif (n < len(gong['redStars']) + len(gong['magentaStars'])):
@@ -386,6 +388,8 @@ class Pan(object):
 
 	@staticmethod
 	def setNthStarSecondBrightnessOfGong(n, brightness, gong):
+		if Pan.HTML_LINE_SEPARATOR == '<br/>':
+			n = n -1
 		if (n < len(gong['redStars'])):
 			gong['redStars'][n][2] = brightness
 		elif (n < len(gong['redStars']) + len(gong['magentaStars'])):
