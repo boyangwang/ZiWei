@@ -75,7 +75,23 @@ class Pan(object):
 		print Pan.getName(self.data['inputs'])
 		self.name = Pan.getName(self.data['inputs'])
 
+	def printLines(self):
+		lines = ''
+		lines += 'COUNT_OF_LINE_SEPARATORS: '
+		pageStr = str(self.page)
+		count = pageStr.count(Pan.HTML_LINE_SEPARATOR)
+		lines += str(count)
+		lines += '\n\n'
+		for i in range(0, count-1):
+			lines += '------- ' + str(i) + ' -------\n'
+			lines += Pan.getNthLineFromPage(pageStr, Pan.HTML_LINE_SEPARATOR, i) + '\n'
+		print lines
+		jsonFile = open('data/' + self.name + '-lines', 'w', encoding="utf-8")
+		jsonFile.write(lines)
+		return lines
+
 	def initData(self):
+		self.printLines()
 		self.setCenterGong()
 		self.cleanUpCenterGong()
 		self.setTwelveGongs()
@@ -464,7 +480,7 @@ class Pan(object):
 		# Pan.printLineChar(line7Cleaned)
 		# Pan.printLineChar(line15Cleaned)
 		# Pan.printLineChar(line23Cleaned)
-		Pan.printLineChar(line31Cleaned)
+		# Pan.printLineChar(line31Cleaned)
 		for i in range(5, 5 + 9):
 			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
 				# print i
@@ -514,23 +530,23 @@ class Pan(object):
 
 		for i in range(5, 5 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				print i
-				print line31Cleaned[i]
+				# print i
+				# print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line31Cleaned[i], twelveGongs[8])
 		for i in range(15, 15 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				print i
-				print line31Cleaned[i]
+				# print i
+				# print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 15, line31Cleaned[i], twelveGongs[9])
 		for i in range(25, 25 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				print i
-				print line31Cleaned[i]
+				# print i
+				# print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 25, line31Cleaned[i], twelveGongs[10])
 		for i in range(35, 35 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				print i
-				print line31Cleaned[i]
+				# print i
+				# print line31Cleaned[i]
 				Pan.setNthStarSecondBrightnessOfGong(i - 35, line31Cleaned[i], twelveGongs[11])
 
 
