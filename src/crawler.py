@@ -72,6 +72,10 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 					return
 				else:
 					print 'INVALID! redo...'
+					driver.collection.remove({
+						'name': name
+					})
+
 
 		if (http):	
 			page = crawlResponseWithInputs(inputs)
@@ -315,7 +319,7 @@ def main():
 	#for inputs in inputsArray:
 	#	createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
+	panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
 	# print panObj
 	print 'Elapsed time: ' + str(time.clock())
 
