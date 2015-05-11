@@ -312,14 +312,14 @@ def main():
 
 	time.clock()
 	
-	#inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2011, 1, 1))]
+	inputsArray = [input for input in createInputsArray(date(1990, 1, 1), date(2001, 1, 1))]
 	print 'GENERATOR DONE'
 	# result = p.map(createPanObjectFromInputs, inputsArray)
 
-	#for inputs in inputsArray:
-	#	createPanObjectFromInputs(inputs)
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 
-	panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
 	# print panObj
 	print 'Elapsed time: ' + str(time.clock())
 

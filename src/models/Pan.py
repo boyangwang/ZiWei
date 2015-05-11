@@ -72,7 +72,7 @@ class Pan(object):
 		page = Pan.replaceBRs(page)
 		self.page = bs4.BeautifulSoup(page, 'html.parser')
 		Pan.readStarList()
-		print Pan.getName(self.data['inputs'])
+		# print Pan.getName(self.data['inputs'])
 		self.name = Pan.getName(self.data['inputs'])
 
 	def printLines(self):
@@ -96,7 +96,7 @@ class Pan(object):
 		openBracketIdx = pageStr.find('<', linkIdx)
 		closeBracketIdx = pageStr.find('>', linkIdx)
 		separator = pageStr[openBracketIdx:closeBracketIdx+1]
-		print 'SEPARATOR: ' + separator + '\n'
+		# print 'SEPARATOR: ' + separator + '\n'
 		Pan.HTML_LINE_SEPARATOR = separator
 		if (separator == '<br/>'):
 			self.page.br.extract()
@@ -113,7 +113,7 @@ class Pan(object):
 
 	def initData(self):
 		self.setHTMLSeparator()
-		self.printLines()
+		# self.printLines()
 		self.setCenterGong()
 		self.cleanUpCenterGong()
 		self.setTwelveGongs()
