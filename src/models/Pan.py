@@ -100,8 +100,8 @@ class Pan(object):
 		Pan.HTML_LINE_SEPARATOR = separator
 		if (separator == '<br/>'):
 			self.page.br.extract()
-			self.page = bs4.BeautifulSoup(pageStr.replace(separator, '<//>'))
-			Pan.HTML_LINE_SEPARATOR = '<//>'
+			self.page = bs4.BeautifulSoup(pageStr.replace(separator, '<br>'))
+			Pan.HTML_LINE_SEPARATOR = '<br>'
 		return separator
 
 	def initData(self):
