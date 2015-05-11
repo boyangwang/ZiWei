@@ -39,7 +39,7 @@ def crawlResponseWithInputs(inputs):
 
 def isInvalid(pans):
 	for pan in pans:
-		print pan
+		# print pan
 		tg = pan['data']['twelveGongs']
 		for gong in tg:
 			for starType in ['redStars', 'brownStars', 'magentaStars']:
