@@ -100,7 +100,14 @@ class Pan(object):
 		Pan.HTML_LINE_SEPARATOR = separator
 		if (separator == '<br/>'):
 			self.page.br.extract()
-			self.page = bs4.BeautifulSoup(pageStr.replace(separator, '<br>'))
+			print 'NUM br: ', pageStr.count('<br>')
+			print 'NUM br/: ', pageStr.count('<br/>')
+			newpage = pageStr.replace(separator, '<br>')
+			print 'new NUM br: ', newpage.count('<br>')
+			print 'new NUM br/: ', newpage.count('<br/>')
+			self.page = bs4.BeautifulSoup(newpage)
+			print 'processed NUM br: ', str(self.page).count('<br>')
+			print 'processed NUM br/: ', str(self.page).count('<br/>')
 			Pan.HTML_LINE_SEPARATOR = '<br>'
 		return separator
 
