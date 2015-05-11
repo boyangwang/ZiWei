@@ -100,6 +100,8 @@ class Pan(object):
 		Pan.HTML_LINE_SEPARATOR = separator
 		if (separator == '<br/>'):
 			self.page.br.extract()
+			pageStr.replace(separator, '<//>')
+			Pan.HTML_LINE_SEPARATOR = '<//>'
 		return separator
 
 	def initData(self):
