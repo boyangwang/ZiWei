@@ -69,7 +69,7 @@ class Pan(object):
 		self.data['inputs'] = inputs
 		self.data['twelveGongs'] = list()
 		self.data['centerGong'] = dict()
-		page = self.replaceBRs(page)
+		page = Pan.replaceBRs(page)
 		self.page = bs4.BeautifulSoup(page)
 		Pan.readStarList()
 		print Pan.getName(self.data['inputs'])
@@ -375,8 +375,6 @@ class Pan(object):
 	''' n from 0 '''
 	@staticmethod
 	def setNthStarBrightnessOfGong(n, brightness, gong):
-		if Pan.HTML_LINE_SEPARATOR == '<br/>':
-			n = n -1
 		if (n < len(gong['redStars'])):
 			gong['redStars'][n][1] = brightness
 		elif (n < len(gong['redStars']) + len(gong['magentaStars'])):
@@ -388,8 +386,6 @@ class Pan(object):
 
 	@staticmethod
 	def setNthStarSecondBrightnessOfGong(n, brightness, gong):
-		if Pan.HTML_LINE_SEPARATOR == '<br/>':
-			n = n -1
 		if (n < len(gong['redStars'])):
 			gong['redStars'][n][2] = brightness
 		elif (n < len(gong['redStars']) + len(gong['magentaStars'])):
