@@ -70,7 +70,7 @@ class Pan(object):
 		self.data['twelveGongs'] = list()
 		self.data['centerGong'] = dict()
 		page = Pan.replaceBRs(page)
-		self.page = bs4.BeautifulSoup(page)
+		self.page = bs4.BeautifulSoup(page, 'html.parser')
 		Pan.readStarList()
 		print Pan.getName(self.data['inputs'])
 		self.name = Pan.getName(self.data['inputs'])
