@@ -6,7 +6,8 @@ $( ".datepicker" ).datepicker({
 	changeMonth: true,
 	changeYear: true,
 	constrainInput: true,
-	defaultDate: '1990-01-01',
+	defaultDate: '1970-01-01',
+	yearRange: '1930:2020'
 });
 console.log('datepicker init done');
 var Lifesub = function(a) {

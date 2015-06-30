@@ -312,8 +312,8 @@ def main():
 
 	time.clock()
 	
-	for startYear in range(1940, 2000, 5):
-		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear+5, 1, 1))]
+	for startYear in range(1940, 2000, 1):
+		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear+1, 1, 1))]
 		print 'GENERATOR DONE'
 		# result = p.map(createPanObjectFromInputs, inputsArray)
 
