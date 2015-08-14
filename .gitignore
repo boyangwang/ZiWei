@@ -2,3 +2,4 @@ data/
 *.pyc
 dump/
 dump.*
+*.out
