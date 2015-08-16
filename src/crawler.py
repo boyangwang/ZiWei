@@ -67,14 +67,15 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 
 			if (results.limit(1).count() >= 1):
 				print 'EXIST: ', name
-				if (not isInvalid(results)):
-					print 'EXIST and VALID: ', name
-					return
-				else:
-					print 'INVALID! redo...'
-					driver.collection.remove({
-						'name': name
-					})
+				return
+			# 	if (not isInvalid(results)):
+			# 		print 'EXIST and VALID: ', name
+			# 		return
+			# 	else:
+			# 		print 'INVALID! redo...'
+			# 		driver.collection.remove({
+			# 			'name': name
+			# 		})
 
 
 		if (http):	
@@ -312,8 +313,17 @@ def main():
 
 	time.clock()
 	
-	for startYear in range(1940, 2000, 1):
-		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear+1, 1, 1))]
+	starting = {
+		'y':1949,
+		'm':3,
+		'd':1,
+	}
+
+	# finish off the current year
+	inputsArray = [input for input in createInputsArray(date(starting['y'], starting['m'], starting['d']), date(starting['y'], 12, 31))]
+
+	for startYear in range(starting['y'] + 1, 1989, 1):
+		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear, 12, 31))]
 		print 'GENERATOR DONE'
 		# result = p.map(createPanObjectFromInputs, inputsArray)
 
