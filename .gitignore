@@ -3,3 +3,4 @@ data/
 dump/
 dump.*
 *.out
+src/server/node_modules/
