@@ -1,10 +1,26 @@
 {
   "name": "ZiWei",
+  "version": "0.8.1",
   "description": "ZiWei",
-  "version": "0.0.1",
   "private": false,
+  "author": "Wang Boyang <wangboyangjinghua@gmail.com>",
   "dependencies": {
     "body-parser": "*",
-    "ejs": "*"
+    "ejs": "*",
+    "bytes": "*",
+    "content-type": "*",
+    "cookie-parser": "*",
+    "cookie-session": "*",
+    "debug": "*",
+    "depd": "*",
+    "ejs": "*",
+    "express-session": "*",
+    "iconv-lite": "*",
+    "method-override": "*",
+    "mongodb": "*",
+    "morgan": "*",
+    "on-finished": "*",
+    "raw-body": "*",
+    "serve-favicon": "*"
   }
 }
