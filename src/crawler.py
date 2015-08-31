@@ -321,7 +321,8 @@ def main():
 
 	# finish off the current year
 	inputsArray = [input for input in createInputsArray(date(starting['y'], starting['m'], starting['d']), date(starting['y'], 12, 31))]
-
+	for inputs in inputsArray:
+		createPanObjectFromInputs(inputs)
 	for startYear in range(starting['y'] + 1, 1989, 1):
 		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear, 12, 31))]
 		print 'GENERATOR DONE'
