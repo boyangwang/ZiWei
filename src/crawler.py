@@ -55,7 +55,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 	page = ''
 	try:
 		name = Pan.getName(inputs)
-		logging.info('START: ', name)
+		logging.info('START: '+ name)
 		
 		if (not offline): 
 			driver = DBDriver(host='localhost')
@@ -68,7 +68,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 
 
 			if (results.limit(1).count() >= 1):
-				logging.info('EXIST: ', name)
+				logging.info('EXIST: '+name)
 				return
 			# 	if (not isInvalid(results)):
 			# 		logging.info('EXIST and VALID: ', name)
@@ -101,10 +101,10 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 			driver.insert(jsonObj)
 		else:
 			panObj.serializeToFile()
-		logging.info('DONE: ', name)
+		logging.info('DONE: '+ name)
 		return panObj
 	except Exception as e:
-		logging.info('ERROR: ', Pan.getName(inputs))
+		logging.info('ERROR: '+Pan.getName(inputs))
 		logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
@@ -309,7 +309,6 @@ def main():
 	log_file_path = 'crawler-{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}-{datetime.minute}-{datetime.second}-starting-{starting[y]}-{starting[m]}-{starting[d]}.log'.format(datetime=datetime.now(), starting=starting)
 	logging.basicConfig(filename=log_file_path,level=logging.DEBUG)
 	
-	logging.info('IN MAIN')
 	logging.info('IN MAIN')
 	# buildStarExplanation()
 	inputs = {
