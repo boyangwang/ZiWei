@@ -21,6 +21,7 @@ from models.LiuNianPan import LiuNianPan
 from models.Pan import Pan
 from datetime import date
 from dateutil.rrule import rrule, DAILY
+import logging
 
 def crawlResponseWithInputs(inputs):
 	url = 'http://www.zhycw.com/pp/zw.aspx'
@@ -297,6 +298,11 @@ def buildStarExplanation():
 	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
 
 def main():
+	logging.info(starting, starting["y"])
+	log_file_path = 'crawler-{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}-{datetime.minute}-{datetime.second}-starting-{starting[y]}-{starting[m]}-{starting[d]}.log'.format(datetime=datetime.now(), starting=starting)
+	logging.basicConfig(filename=log_file_path,level=logging.DEBUG)
+	
+	logging.info('IN MAIN')
 	print 'IN MAIN'
 	# buildStarExplanation()
 	inputs = {
