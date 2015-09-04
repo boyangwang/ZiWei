@@ -298,7 +298,13 @@ def buildStarExplanation():
 	json.dump(obj, starExplanation, ensure_ascii=False, indent=2);
 
 def main():
-	logging.info(starting, starting["y"])
+
+	starting = {
+		'y':1949,
+		'm':3,
+		'd':1,
+	}
+
 	log_file_path = 'crawler-{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}-{datetime.minute}-{datetime.second}-starting-{starting[y]}-{starting[m]}-{starting[d]}.log'.format(datetime=datetime.now(), starting=starting)
 	logging.basicConfig(filename=log_file_path,level=logging.DEBUG)
 	
@@ -319,11 +325,6 @@ def main():
 
 	time.clock()
 	
-	starting = {
-		'y':1949,
-		'm':3,
-		'd':1,
-	}
 
 	# finish off the current year
 	inputsArray = [input for input in createInputsArray(date(starting['y'], starting['m'], starting['d']), date(starting['y'], 12, 31))]
