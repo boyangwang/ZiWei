@@ -41,7 +41,7 @@ def crawlResponseWithInputs(inputs):
 
 def isInvalid(pans):
 	for pan in pans:
-		# print pan
+		# logging.info(pan)
 		tg = pan['data']['twelveGongs']
 		for gong in tg:
 			for starType in ['redStars', 'brownStars', 'magentaStars']:
@@ -55,7 +55,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 	page = ''
 	try:
 		name = Pan.getName(inputs)
-		print 'START: ', name
+		logging.info('START: ', name)
 		
 		if (not offline): 
 			driver = DBDriver(host='localhost')
@@ -64,17 +64,17 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 				'name': name
 			})
 
-			# print 'LEN: ', results.limit(1).count()
+			# logging.info('LEN: ', results.limit(1).count())
 
 
 			if (results.limit(1).count() >= 1):
-				print 'EXIST: ', name
+				logging.info('EXIST: ', name)
 				return
 			# 	if (not isInvalid(results)):
-			# 		print 'EXIST and VALID: ', name
+			# 		logging.info('EXIST and VALID: ', name)
 			# 		return
 			# 	else:
-			# 		print 'INVALID! redo...'
+			# 		logging.info('INVALID! redo...')
 			# 		driver.collection.remove({
 			# 			'name': name
 			# 		})
@@ -101,11 +101,11 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 			driver.insert(jsonObj)
 		else:
 			panObj.serializeToFile()
-		print 'DONE: ', name
+		logging.info('DONE: ', name)
 		return panObj
 	except Exception as e:
-		print 'ERROR: ', Pan.getName(inputs)
-		print str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message)
+		logging.info('ERROR: ', Pan.getName(inputs))
+		logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
 		# traceback.print_tb(sys.exc_info()[3], None, errlog)
@@ -123,40 +123,40 @@ def createStarList():
 			continue
 
 		if (done):
-			print 'skip: ' + str(i)
+			logging.info('skip: ' + str(i))
 			done = False
 			continue
-		print i
+		logging.info(i)
 		url = baseUrl + str(i)
 		req = urllib2.Request(url)
 		res = urllib2.urlopen(req)
 		bs = BS(res.read())
 		
 		if (bs.find('h1') != None): # .string.find(u'本页面暂时出错，正在检查！') != -1):
-			print 'error: ', i
+			logging.info('error: ', i)
 			starList.append(str(i))
 			continue 
 		
 		firstAttempt = (bs.find_all('div')[2].contents[1].string.strip())
 		puncIndex = firstAttempt.find(u'、')
 		if (puncIndex == -1):
-			print 'first'
-			print firstAttempt[:2]
+			logging.info('first')
+			logging.info(firstAttempt[:2])
 			starList.append(firstAttempt[:2])
 		else:
-			print 'second'
+			logging.info('second')
 			firstInPair = firstAttempt[:puncIndex]
 			secondInPair = firstAttempt[puncIndex+1:puncIndex+3]
 			done = True
-			print firstInPair
-			print secondInPair
+			logging.info(firstInPair)
+			logging.info(secondInPair)
 			starList.append(firstInPair)
 			starList.append(secondInPair)
 
 	
 	starListFile = open('starList.json', 'w', encoding="utf-8")
 	starListString = json.dumps(starList, ensure_ascii=False)
-	print starListString
+	logging.info(starListString)
 	starListFile.write(starListString.encode('utf-8'))
 	return starList
 
@@ -301,8 +301,8 @@ def buildStarExplanation():
 def main():
 
 	starting = {
-		'y':1949,
-		'm':3,
+		'y':1969,
+		'm':6,
 		'd':1,
 	}
 
@@ -310,7 +310,7 @@ def main():
 	logging.basicConfig(filename=log_file_path,level=logging.DEBUG)
 	
 	logging.info('IN MAIN')
-	print 'IN MAIN'
+	logging.info('IN MAIN')
 	# buildStarExplanation()
 	inputs = {
 		'y':1990,
@@ -333,15 +333,15 @@ def main():
 		createPanObjectFromInputs(inputs)
 	for startYear in range(starting['y'] + 1, 1989, 1):
 		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear, 12, 31))]
-		print 'GENERATOR DONE'
+		logging.info('GENERATOR DONE')
 		# result = p.map(createPanObjectFromInputs, inputsArray)
 
 		for inputs in inputsArray:
 			createPanObjectFromInputs(inputs)
 
 	# panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
-	# print panObj
-	print 'Elapsed time: ' + str(time.clock())
+	# logging.info(panObj)
+	logging.info('Elapsed time: ' + str(time.clock()))
 
 if __name__ == '__main__':
 	main()
