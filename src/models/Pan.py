@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 import sys
 import codecs
 codecs.register(lambda name: codecs.lookup('utf-8') if name == 'cp65001' else None)
@@ -8,7 +9,7 @@ import json
 import ast
 import bs4
 import re
-from pprint import pprint
+from plogging.info(import pprint)
 
 ''' num records:
 {name:'y-1995-m-3-d-27-h-2-sex-1-mode-1.json'}
@@ -72,7 +73,7 @@ class Pan(object):
 		page = Pan.replaceBRs(page)
 		self.page = bs4.BeautifulSoup(page, 'html.parser')
 		Pan.readStarList()
-		# print Pan.getName(self.data['inputs'])
+		# logging.info(Pan.getName(self.data['inputs']))
 		self.name = Pan.getName(self.data['inputs'])
 
 	def printLines(self):
@@ -85,7 +86,7 @@ class Pan(object):
 		for i in range(0, count-1):
 			lines += '------- ' + str(i) + ' -------\n'
 			lines += Pan.getNthLineFromPage(pageStr, Pan.HTML_LINE_SEPARATOR, i) + '\n'
-		print lines
+		logging.info(lines)
 		jsonFile = open('data/' + self.name + '-lines', 'w', encoding="utf-8")
 		jsonFile.write(lines)
 		return lines
@@ -96,18 +97,18 @@ class Pan(object):
 		openBracketIdx = pageStr.find('<', linkIdx)
 		closeBracketIdx = pageStr.find('>', linkIdx)
 		separator = pageStr[openBracketIdx:closeBracketIdx+1]
-		# print 'SEPARATOR: ' + separator + '\n'
+		# logging.info('SEPARATOR: ' + separator + '\n')
 		Pan.HTML_LINE_SEPARATOR = separator
 		if (separator == '<br/>'):
 			self.page.br.extract()
-			print 'NUM br: ', pageStr.count('<br>')
-			print 'NUM br/: ', pageStr.count('<br/>')
+			logging.info('NUM br: '+ pageStr.count('<br>'))
+			logging.info('NUM br/: '+ pageStr.count('<br/>'))
 			newpage = pageStr.replace(separator, '<br>')
-			print 'new NUM br: ', newpage.count('<br>')
-			print 'new NUM br/: ', newpage.count('<br/>')
+			logging.info('new NUM br: '+ newpage.count('<br>'))
+			logging.info('new NUM br/: '+ newpage.count('<br/>'))
 			self.page = bs4.BeautifulSoup(newpage)
-			print 'processed NUM br: ', str(self.page).count('<br>')
-			print 'processed NUM br/: ', str(self.page).count('<br/>')
+			logging.info('processed NUM br: '+ str(self.page).count('<br>'))
+			logging.info('processed NUM br/: '+ str(self.page).count('<br/>'))
 			Pan.HTML_LINE_SEPARATOR = '<br>'
 		return separator
 
@@ -186,12 +187,12 @@ class Pan(object):
 		for i in range(12):
 			twelveGongs[i]['ageRange'] = ''
 			index = myIter.next()
-			# print i
+			# logging.info(i)
 			sibs = [sib for sib in self.page.find_all('font', color='#000099')[index].parent.next_siblings]
 			attempt = sibs[0].string.strip() 
-			# print attempt
+			# logging.info(attempt)
 			if (len(attempt) > 0 and attempt[0].isnumeric()):
-				# print 'attempt success!'
+				# logging.info('attempt success!')
 				twelveGongs[i]['ageRange'] = attempt
 		# for i in range(12):
 
@@ -280,15 +281,15 @@ class Pan(object):
 			# i = 0
 			# for el in bars[0].next_elements:
 			# 	if (u'│' in str(el) and el.next_element.name == 'br' and u'│' in str(el.next_element.next_element)):
-			# 		print str(i) + '_____________________________________________________'
-			# 		print el.next_element.next_element
+			# 		logging.info(str(i) + '_____________________________________________________')
+			# 		logging.info(el.next_element.next_element)
 			# 		bars[0] = el.next_element.next_element
 			# 		break
 			# i = 0
 			# for el in bars[1].next_elements:
 			# 	if (u'│' in str(el) and el.next_element.name == 'br' and u'│' in str(el.next_element.next_element)):
-			# 		print str(i) + '_____________________________________________________'
-			# 		print el.next_element.next_element
+			# 		logging.info(str(i) + '_____________________________________________________')
+			# 		logging.info(el.next_element.next_element)
 			# 		bars[1] = el.next_element.next_element
 			# 		break
 		
@@ -310,19 +311,19 @@ class Pan(object):
 		# bars = self.page.find_all(text=re.compile(u'│'))
 		# i = 0
 		# for bar in bars:
-		# 	print i
+		# 	logging.info(i)
 		# 	i += 1
-		# 	print bar
+		# 	logging.info(bar)
 
 		# self.fillMajorStarsToGong(bars, twelveGongs[0])
 
 		# titleText = self.page.find(text='├─────────┬─────────┬─────────┬─────────┤')
-		# print titleText.string
-		# print titleText.next_element
-		# print titleText.next_element.name
-		# print titleText.next_element.next_element
-		# print titleText.next_element.next_element.string
-		# print titleText.next_element.next_element.next_element.string
+		# logging.info(titleText.string)
+		# logging.info(titleText.next_element)
+		# logging.info(titleText.next_element.name)
+		# logging.info(titleText.next_element.next_element)
+		# logging.info(titleText.next_element.next_element.string)
+		# logging.info(titleText.next_element.next_element.next_element.string)
 
 
 	def fillMajorStarsToGong(self, bars, gongIndex):
@@ -335,14 +336,14 @@ class Pan(object):
 		while (current.string.find(u'│') == -1):
 			
 			if (current.font['color'] == '#ff0000'):
-				# print 'red'
+				# logging.info('red')
 				gong['redStars'].append([Pan.getIdFromA(current), '', ''])
 			elif (current.font['color'] == '#ff00ff'):
-				# print 'magenta'
+				# logging.info('magenta')
 				gong['magentaStars'].append([Pan.getIdFromA(current), '', ''])
 			else:
 				gong['brownStars'].append([Pan.getIdFromA(current), '', ''])
-				# print 'brown'
+				# logging.info('brown')
 			current = current.next_sibling
 		
 		if (gongIndex == 6):
@@ -375,10 +376,10 @@ class Pan(object):
 			n = 1
 		firstDelim = n - 1
 		start = find_nth(page, delim, firstDelim)
-		print start
+		logging.info(start)
 		end = find_nth(page, delim, firstDelim + 1)
-		print end
-		print page[start:end + len(delim)]
+		logging.info(end)
+		logging.info(page[start:end + len(delim)])
 		return page[start:end + len(delim)]
 
 	''' n from 0 '''
@@ -406,10 +407,10 @@ class Pan(object):
 
 	@staticmethod
 	def printLineChar(line):
-		print len(line)
+		logging.info(len(line))
 		for i in range(0, len(line)):
-			print i
-			print line[i]
+			logging.info(i)
+			logging.info(line[i])
 
 	def fillMajorStarBrightness(self, bars):
 		twelveGongs = self.data['twelveGongs']
@@ -425,69 +426,69 @@ class Pan(object):
 
 		for i in range(5, 5 + 9):
 			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line6[i]
+				# logging.info(i)
+				# logging.info(line6[i])
 				Pan.setNthStarBrightnessOfGong(i - 5, line6[i], twelveGongs[0])
 		for i in range(15, 15 + 9):
 			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line6[i]
+				# logging.info(i)
+				# logging.info(line6[i])
 				Pan.setNthStarBrightnessOfGong(i - 15, line6[i], twelveGongs[1])
 		for i in range(25, 25 + 9):
 			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line6[i]
+				# logging.info(i)
+				# logging.info(line6[i])
 				Pan.setNthStarBrightnessOfGong(i - 25, line6[i], twelveGongs[2])
 		for i in range(35, 35 + 9):
 			if (line6[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line6[i]
+				# logging.info(i)
+				# logging.info(line6[i])
 				Pan.setNthStarBrightnessOfGong(i - 35, line6[i], twelveGongs[3])
 
 		for i in range(5, 5 + 9):
 			if (line14[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line14[i]
+				# logging.info(i)
+				# logging.info(line14[i])
 				Pan.setNthStarBrightnessOfGong(i - 5, line14[i], twelveGongs[4])
 		index = find_nth(line14, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
 			if (line14[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
+				# logging.info(i)
 				Pan.setNthStarBrightnessOfGong(i - index, line14[i], twelveGongs[5])
 		
 		for i in range(5, 5 + 9):
 			if (line22[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line14[i]
+				# logging.info(i)
+				# logging.info(line14[i])
 				Pan.setNthStarBrightnessOfGong(i - 5, line22[i], twelveGongs[6])
 		index = find_nth(line22, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
 			if (line22[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
+				# logging.info(i)
 				Pan.setNthStarBrightnessOfGong(i - index, line22[i], twelveGongs[7])
 		
 
 		for i in range(5, 5 + 9):
 			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line30[i]
+				# logging.info(i)
+				# logging.info(line30[i])
 				Pan.setNthStarBrightnessOfGong(i - 5, line30[i], twelveGongs[8])
 		for i in range(15, 15 + 9):
 			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line30[i]
+				# logging.info(i)
+				# logging.info(line30[i])
 				Pan.setNthStarBrightnessOfGong(i - 15, line30[i], twelveGongs[9])
 		for i in range(25, 25 + 9):
 			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line30[i]
+				# logging.info(i)
+				# logging.info(line30[i])
 				Pan.setNthStarBrightnessOfGong(i - 25, line30[i], twelveGongs[10])
 		for i in range(35, 35 + 9):
 			if (line30[i] in [u'庙', u'旺', u'利', u'得', u'平', u'落', u'陷']):
-				# print i
-				# print line30[i]
+				# logging.info(i)
+				# logging.info(line30[i])
 				Pan.setNthStarBrightnessOfGong(i - 35, line30[i], twelveGongs[11])
 		
 		line7Cleaned = line7.replace('<font color="#FF0000">', '')
@@ -505,70 +506,70 @@ class Pan(object):
 		# Pan.printLineChar(line31Cleaned)
 		for i in range(5, 5 + 9):
 			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line7Cleaned[i]
+				# logging.info(i)
+				# logging.info(line7Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line7Cleaned[i], twelveGongs[0])
 		for i in range(15, 15 + 9):
 			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line7Cleaned[i]
+				# logging.info(i)
+				# logging.info(line7Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 15, line7Cleaned[i], twelveGongs[1])
 		for i in range(25, 25 + 9):
 			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line7Cleaned[i]
+				# logging.info(i)
+				# logging.info(line7Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 25, line7Cleaned[i], twelveGongs[2])
 		for i in range(35, 35 + 9):
 			if (line7Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line7Cleaned[i]
+				# logging.info(i)
+				# logging.info(line7Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 35, line7Cleaned[i], twelveGongs[3])
 
 		for i in range(5, 5 + 9):
 			if (line15Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line15Cleaned[i]
+				# logging.info(i)
+				# logging.info(line15Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line15Cleaned[i], twelveGongs[4])
 		index = find_nth(line15Cleaned, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
 			if (line15Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
+				# logging.info(i)
 				Pan.setNthStarSecondBrightnessOfGong(i - index, line15Cleaned[i], twelveGongs[5])
 
 
 		for i in range(5, 5 + 9):
 			if (line23Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line23Cleaned[i]
+				# logging.info(i)
+				# logging.info(line23Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line23Cleaned[i], twelveGongs[6])
 		index = find_nth(line23Cleaned, u'│', 3)
 		index += 1
 		for i in range(index, index + 9):
 			if (line23Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
+				# logging.info(i)
 				Pan.setNthStarSecondBrightnessOfGong(i - index, line23Cleaned[i], twelveGongs[7])
 
 
 		for i in range(5, 5 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line31Cleaned[i]
+				# logging.info(i)
+				# logging.info(line31Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 5, line31Cleaned[i], twelveGongs[8])
 		for i in range(15, 15 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line31Cleaned[i]
+				# logging.info(i)
+				# logging.info(line31Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 15, line31Cleaned[i], twelveGongs[9])
 		for i in range(25, 25 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line31Cleaned[i]
+				# logging.info(i)
+				# logging.info(line31Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 25, line31Cleaned[i], twelveGongs[10])
 		for i in range(35, 35 + 9):
 			if (line31Cleaned[i] in [u'忌', u'科', u'禄', u'权']):
-				# print i
-				# print line31Cleaned[i]
+				# logging.info(i)
+				# logging.info(line31Cleaned[i])
 				Pan.setNthStarSecondBrightnessOfGong(i - 35, line31Cleaned[i], twelveGongs[11])
 
 
@@ -592,7 +593,7 @@ class Pan(object):
 			
 		
 			# result = re.match(pattern, curLastChar.string)
-			# print result
+			# logging.info(result)
 			# curLastChar = curLastChar.next_element
 
 
@@ -629,9 +630,9 @@ class Pan(object):
 
 	def setSCBZ(self):
 		scbz = self.page.find_all(text=re.compile(u'造：'))[0]
-		print scbz.string
+		logging.info(scbz.string)
 		scbz = scbz.next_sibling
-		print scbz.string
+		logging.info(scbz.string)
 		self.data['centerGong']['八字'] = unicode(scbz.string.strip())
 
 
@@ -742,7 +743,7 @@ class Pan(object):
 
 
 	def setSolarBirthday(self):
-		# print self.data['inputs']
+		# logging.info(self.data['inputs'])
 		yangLi = str(self.data['inputs']['y']) + u'年'
 
 		yangLi = yangLi + (str(self.data['inputs']['m']) if self.data['inputs']['m'] >= 10 else '0' + str(self.data['inputs']['m'])) + u'月'
@@ -779,12 +780,12 @@ def find_nth(haystack, needle, n):
 def find_nth_dbg(haystack, needle, n):
 	
     start = haystack.find(needle)
-    print haystack, needle, n
-    print start
+    logging.info(haystack, needle, n)
+    logging.info(start)
     while start >= 0 and n > 1:
-    	print haystack
-    	print needle
+    	logging.info(haystack)
+    	logging.info(needle)
         start = haystack.find(needle, start+len(needle))
-        print start
+        logging.info(start)
         n -= 1
     return start
