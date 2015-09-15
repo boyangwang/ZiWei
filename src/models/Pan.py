@@ -9,7 +9,6 @@ import json
 import ast
 import bs4
 import re
-from plogging.info(import pprint)
 
 ''' num records:
 {name:'y-1995-m-3-d-27-h-2-sex-1-mode-1.json'}
