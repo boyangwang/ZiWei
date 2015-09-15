@@ -2,7 +2,7 @@
 var config = require("./config/config.js");
 var favicon = require('serve-favicon');
 var mongodb = require('mongodb');
-mongodb.Db.connect('mongodb://localhost:27017/ziwei', function(err, db) {
+mongodb.MongoClient.connect('mongodb://localhost:27017/ziwei', function(err, db) {
 	console.log('connecting to mongodb');
 	if (err) {
 		console.log(err);
