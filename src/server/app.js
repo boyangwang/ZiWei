@@ -29,24 +29,44 @@ var handlePostZiWeiPan = function(app, req, res) {
 	// retrieve pan object, or it doesn't exist
 	var inputs = req.body;
     console.log(inputs);
-	var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
-	var panObj = null;
-	console.log('name: ', name);
-	GLOBAL.Db.collection('zhycw', function(err, collection) {
+    searchPanRenderPage(inputs, res, inputs['d']);	
+}
+
+var searchPanRenderPage = function(inputs, res, origD) {
+    var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
+    console.log('name: ', name);
+    GLOBAL.Db.collection('zhycw', function(err, collection) {
         collection.findOne({'name': name}, function(err, item) {
-        	resultPage = 'default';
             if (item == null) {
-        		res.render('notFound');
+                inputs['d'] = (parseInt(inputs['d']) + 1) % 28 + 1;
+                if (origD == inputs['d']) {
+                    res.render('notFound');
+                }
+                else {
+                    searchPanRenderPage(inputs, res, origD);    
+                }
             }
             else {
-    			item.starList = starList;        	
-    			item.starExplanation = GLOBAL.starExplanation;
-            	item.data.inputs.name = req.body.name;
-            	console.log(item);
-            	res.render('ZiWeiPan', item);
+                item.starList = starList;           
+                item.starExplanation = GLOBAL.starExplanation;
+                item.data.inputs.name = req.body.name;
+                console.log(item);
+
+                item = replaceWithOrigD(item, origD);
+
+                res.render('ZiWeiPan', item);
             }
         });
     });
+}
+
+var replaceWithOrigD = function(item, origD) {
+    
+    var origDString = origD >= 10 ? origD.toString() : '0' + origD.toString();
+    
+    item['data']['centerGong']['阳历生日'][9] = origDString[0];
+    item['data']['centerGong']['阳历生日'][10] = origDString[1];
+    return item;
 }
 
 app.post('/ZiWeiPan', handlePostZiWeiPan.bind(null, app));
