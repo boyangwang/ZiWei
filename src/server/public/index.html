@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
+  <title>缘中秀在线排盘系统</title>
   <meta name="description" content="">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
@@ -23,109 +23,100 @@
   <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-              <div class="container">
-                <div class="navbar-header">
-                  <a class="navbar-brand" href="/">缘中秀在线排盘系统aaa</a>
-                </div>
-              </div>
-            </nav>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">缘中秀在线排盘系统</a>
+      </div>
+    </div>
+  </nav>
+  <div id="ljms_DIV_1 row">
+    <div id="ljms_DIV_2">
+      <form name="info" id="ljms_FORM_3" method="post" action="/ZiWeiPan" >
+        <label id="ljms_LABEL_7">
+          姓名:
+        </label>
+        <input type="text" class="form-control" name="name" id="ljms_INPUT_8" style="margin-left: 4px;"/>
+        <br>
+        <div style="padding: 15px 0px 0px 0px">
+        <label id="ljms_LABEL_10">
+          性别:
+        </label>
+        
+        <div class="radio-inline" style="margin-left: 20px">
+          <label>
+            <input type="radio" name="sex" class="sexRadio" value=1 checked>
+            男
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="sex" class="sexRadio" value=0>
+            女
+          </label>
+        </div>
+        </div>
+        <!-- <input type="hidden" name="sex" id="ljms_INPUT_13" value="0" /> -->
+        <br>
+        <label id="ljms_LABEL_15">
+          公历生日:
+        </label>
+        <input class="form-control datepicker" readonly="true" type="text" id="ljms_INPUT_16" name="birthday"/>
+        <label id="ljms_LABEL_18">
+          时辰：
+        </label>
+        <div style="margin: 14px 0px 0px 6px; display: inline-block;">
+        <select class="form-control" name="h" id="ljms_SELECT_19">
+          <option value="0" id="ljms_OPTION_20">
+            子时 23:00-0:59
+          </option>
+          <option value=2 id="ljms_OPTION_22">
+            丑时 1:00-2:59
+          </option>
+          <option value=4 id="ljms_OPTION_24">
+            寅时 3:00-4:59
+          </option>
+          <option value=6 id="ljms_OPTION_26">
+            卯时 5:00-6:59
+          </option>
+          <option value=8 id="ljms_OPTION_28">
+            辰时 7:00-8:59
+          </option>
+          <option value=10 id="ljms_OPTION_30">
+            巳时 9:00-10:59
+          </option>
+          <option value=12 id="ljms_OPTION_32">
+            午时 11:00-12:59
+          </option>
+          <option value=14 id="ljms_OPTION_34">
+            未时 13:00-14:59
+          </option>
+          <option value=16 id="ljms_OPTION_36">
+            申时 15:00-16:59
+          </option>
+          <option value=18 id="ljms_OPTION_38">
+            酉时 17:00-18:59
+          </option>
+          <option value=20 id="ljms_OPTION_40">
+            戌时 19:00-20:59
+          </option>
+          <option value=22 id="ljms_OPTION_42">
+            亥时 21:00-22:59
+          </option>
+        </select>
+        </div>
+      </form>
+    </div>
+    <div class="second-row">
+        <img class="pan-img" src="./img/lifepan.png" onclick="Lifesub(1)">
+        <img class="pan-img" src="./img/daxianpan.png" onclick="Lifesub(2)">
+        <img class="pan-img" src="./img/yearpan.png" onclick="Lifesub(3)">
+    </div>
+  </div>
 
-            <!-- Main jumbotron for a primary marketing message or call to action -->
-            <div class="container row">
-              <div id="ljms_DIV_1 col-md-12">
-                <div id="ljms_DIV_2" style="margin: 0px auto;">
-                  <form name="info" id="ljms_FORM_3" method="post" action="/ZiWeiPan" >
-                    <label id="ljms_LABEL_7">
-                      姓名:
-                    </label>
-                    <input type="text" class="form-control" name="name" id="ljms_INPUT_8" style="margin-left: 4px;"/>
-                    <br>
-                    <div style="padding: 15px 0px 0px 0px">
-                    <label id="ljms_LABEL_10">
-                      性别:
-                    </label>
-                    
-                    <div class="radio-inline" style="margin-left: 20px">
-                      <label>
-                        <input type="radio" name="sex" class="sexRadio" value=1 checked>
-                        男
-                      </label>
-                    </div>
-                    <div class="radio-inline">
-                      <label>
-                        <input type="radio" name="sex" class="sexRadio" value=0>
-                        女
-                      </label>
-                    </div>
-                    </div>
-                    <!-- <input type="hidden" name="sex" id="ljms_INPUT_13" value="0" /> -->
-                    <br>
-                    <label id="ljms_LABEL_15">
-                      公历生日:
-                    </label>
-                    <input class="form-control datepicker" readonly="true" type="text" id="ljms_INPUT_16" name="birthday"/>
-                    <label id="ljms_LABEL_18">
-                      时辰：
-                    </label>
-                    <div style="margin: 14px 0px 0px 6px; display: inline-block;">
-                    <select class="form-control" name="h" id="ljms_SELECT_19">
-                      <option value="0" id="ljms_OPTION_20">
-                        子时 23:00-0:59
-                      </option>
-                      <option value=2 id="ljms_OPTION_22">
-                        丑时 1:00-2:59
-                      </option>
-                      <option value=4 id="ljms_OPTION_24">
-                        寅时 3:00-4:59
-                      </option>
-                      <option value=6 id="ljms_OPTION_26">
-                        卯时 5:00-6:59
-                      </option>
-                      <option value=8 id="ljms_OPTION_28">
-                        辰时 7:00-8:59
-                      </option>
-                      <option value=10 id="ljms_OPTION_30">
-                        巳时 9:00-10:59
-                      </option>
-                      <option value=12 id="ljms_OPTION_32">
-                        午时 11:00-12:59
-                      </option>
-                      <option value=14 id="ljms_OPTION_34">
-                        未时 13:00-14:59
-                      </option>
-                      <option value=16 id="ljms_OPTION_36">
-                        申时 15:00-16:59
-                      </option>
-                      <option value=18 id="ljms_OPTION_38">
-                        酉时 17:00-18:59
-                      </option>
-                      <option value=20 id="ljms_OPTION_40">
-                        戌时 19:00-20:59
-                      </option>
-                      <option value=22 id="ljms_OPTION_42">
-                        亥时 21:00-22:59
-                      </option>
-                    </select>
-                    </div>
-                  </form>
-                    
-              </div>
-              <div class='container row'>
-              <div class="cs_main_bot" style="width: 325px;display: block;margin: 0 auto;"><img src="/img/lifepan.png" width="87" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(1)"><img src="/img/daxianpan.png" width="87" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(2)"><img src="/img/yearpan.png" width="87" height"44" style="cursor:pointer; margin: 10px;" onclick="Lifesub(3)"></div>
-              </div>
-            </div>
-
-            
-
-            </div>
-
-            <script src="js/vendor/jquery-1.11.2.min.js"></script>
-            <script src="js/vendor/jquery-ui.min.js"></script>
-            <script src="js/vendor/bootstrap.min.js"></script>
-            <script src="js/main.js"></script>
-          </body>
-          </html>
+  <script src="js/vendor/jquery-1.11.2.min.js"></script>
+  <script src="js/vendor/jquery-ui.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
