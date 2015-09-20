@@ -49,7 +49,7 @@ var searchPanRenderPage = function(inputs, res, origD) {
             else {
                 item.starList = starList;           
                 item.starExplanation = GLOBAL.starExplanation;
-                item.data.inputs.name = req.body.name;
+                item.data.inputs.name = inputs.name;
                 console.log(item);
 
                 item = replaceWithOrigD(item, origD);
