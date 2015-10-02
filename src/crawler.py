@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import traceback
-reload(sys)
-sys.setdefaultencoding('utf8')
+
 import codecs
 _open_func_bak = open # Make a back up, just in case
 open = codecs.open
@@ -11,14 +10,14 @@ import time
 from dbDrive import DBDriver
 from multiprocessing import Pool
 import json
-import urllib
-import urllib2
+import urllib.request
 import socket
 from bs4 import BeautifulSoup as BS
+from models.Pan import Pan
 from models.BenMingPan import BenMingPan
 from models.DaXianPan import DaXianPan 
 from models.LiuNianPan import LiuNianPan
-from models.Pan import Pan
+
 from datetime import date
 from datetime import datetime
 from dateutil.rrule import rrule, DAILY
@@ -28,9 +27,8 @@ def crawlResponseWithInputs(inputs):
 	url = 'http://www.zhycw.com/pp/zw.aspx'
 	form_data = inputs
 	form_data['submit'] = '%E5%BC%80%E5%A7%8B%E6%8E%92%E7%9B%98',
-	form_data_encoded = urllib.urlencode(form_data)
-	req = urllib2.Request(url, form_data_encoded)
-	res = urllib2.urlopen(req)
+	form_data_encoded = urllib.parse.urlencode(form_data)
+	res = urllib.request.urlopen(url, form_data_encoded.encode('utf-8'))
 	res = res.read()
 	return res
 
@@ -86,11 +84,11 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 			page = open('sample-response.html', 'r').read()
 
 		if (inputs['mode'] == 1):
-			panObj = BenMingPan(inputs, page)
+			panObj = BenMingPan(inputs, page, logging)
 		elif (inputs['mode'] == 2):
-			panObj = DaXianPan(inputs, page)
+			panObj = DaXianPan(inputs, page, logging)
 		elif (inputs['mode'] == 3):
-			panObj = LiuNianPan(inputs, page)
+			panObj = LiuNianPan(inputs, page, logging)
 		else:
 			# unrecognized mode
 			panObj = None
@@ -103,15 +101,17 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 			panObj.serializeToFile()
 		logging.info('DONE: '+ name)
 		return panObj
-	except Exception as e:
-		logging.info('ERROR: '+Pan.getName(inputs))
-		logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
-		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
-		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e.message))
-		# traceback.print_tb(sys.exc_info()[3], None, errlog)
-		traceback.print_exc(None, errlog)
-		errlog.write(page)
-		return None
+	except:
+		logging.exception('magic?');
+		raise
+	# 	logging.info('ERROR: '+Pan.getName(inputs))
+	# 	logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
+	# 	errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
+	# 	errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
+	# 	# traceback.print_tb(sys.exc_info()[3], None, errlog)
+	# 	traceback.print_exc(None, errlog)
+	# 	errlog.write(page)
+	# 	return None
 
 def createStarList():
 	starList = list()
@@ -128,8 +128,7 @@ def createStarList():
 			continue
 		logging.info(i)
 		url = baseUrl + str(i)
-		req = urllib2.Request(url)
-		res = urllib2.urlopen(req)
+		res = urllib.request.urlopen(url)
 		bs = BS(res.read())
 		
 		if (bs.find('h1') != None): # .string.find(u'本页面暂时出错，正在检查！') != -1):
@@ -301,20 +300,20 @@ def buildStarExplanation():
 def main():
 
 	starting = {
-		'y':1969,
-		'm':6,
+		'y':2010,
+		'm':11,
 		'd':1,
 	}
 
 	log_file_path = 'crawler-{datetime.year}-{datetime.month}-{datetime.day}-{datetime.hour}-{datetime.minute}-{datetime.second}-starting-{starting[y]}-{starting[m]}-{starting[d]}.log'.format(datetime=datetime.now(), starting=starting)
-	logging.basicConfig(filename=log_file_path,level=logging.DEBUG)
+	logging.basicConfig(level=logging.DEBUG, handlers=[logging.FileHandler(log_file_path, 'w', 'utf-8')])
 	
 	logging.info('IN MAIN')
 	# buildStarExplanation()
 	inputs = {
-		'y':1990,
-		'm':9,
-		'd':10,
+		'y':2010,
+		'm':12,
+		'd':31,
 		'h':12,
 		'min':0,
 		'sex':1,
@@ -330,7 +329,7 @@ def main():
 	inputsArray = [input for input in createInputsArray(date(starting['y'], starting['m'], starting['d']), date(starting['y'], 12, 31))]
 	for inputs in inputsArray:
 		createPanObjectFromInputs(inputs)
-	for startYear in range(starting['y'] + 1, 1989, 1):
+	for startYear in range(starting['y'] + 1, 2031, 1):
 		inputsArray = [input for input in createInputsArray(date(startYear, 1, 1), date(startYear, 12, 31))]
 		logging.info('GENERATOR DONE')
 		# result = p.map(createPanObjectFromInputs, inputsArray)
@@ -338,7 +337,7 @@ def main():
 		for inputs in inputsArray:
 			createPanObjectFromInputs(inputs)
 
-	# panObj = createPanObjectFromInputs(inputs, http=True, offline=False)
+	# panObj = createPanObjectFromInputs(inputs, http=True, offline=True)
 	# logging.info(panObj)
 	logging.info('Elapsed time: ' + str(time.clock()))
 
