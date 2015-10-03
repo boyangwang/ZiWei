@@ -108,7 +108,6 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
 		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
 		traceback.print_exc(None, errlog)
-		errlog.write(page)
 		return None
 
 def createStarList():
