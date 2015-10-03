@@ -298,7 +298,7 @@ def buildStarExplanation():
 def main():
 
 	starting = {
-		'y':2010,
+		'y':2009,
 		'm':11,
 		'd':1,
 	}
