@@ -101,7 +101,7 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 			panObj.serializeToFile()
 		logging.info('DONE: '+ name)
 		return panObj
-	except:
+	except Exception as e:
 		logging.exception('magic?');
 		logging.info('ERROR: '+Pan.getName(inputs))
 		logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
