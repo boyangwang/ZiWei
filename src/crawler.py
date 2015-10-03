@@ -103,15 +103,14 @@ def createPanObjectFromInputs(inputs, http=True, offline=False):
 		return panObj
 	except:
 		logging.exception('magic?');
-		raise
-	# 	logging.info('ERROR: '+Pan.getName(inputs))
-	# 	logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
-	# 	errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
-	# 	errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
-	# 	# traceback.print_tb(sys.exc_info()[3], None, errlog)
-	# 	traceback.print_exc(None, errlog)
-	# 	errlog.write(page)
-	# 	return None
+		logging.info('ERROR: '+Pan.getName(inputs))
+		logging.info(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
+		errlog = open('data/errlog-' + Pan.getName(inputs), 'w')
+		errlog.write(str(sys.exc_info()[0]) + '\n' + str(e.__doc__) + '\n' + str(e))
+		traceback.print_tb(sys.exc_info()[3], None, errlog)
+		traceback.print_exc(None, errlog)
+		errlog.write(page)
+		return None
 
 def createStarList():
 	starList = list()
