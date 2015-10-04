@@ -662,7 +662,7 @@ class Pan(object):
         
         logging.info(self.scbz.string)
         self.scbz = self.scbz.next_sibling
-        logging.info(scbz.string)
+        logging.info(self.scbz.string)
         self.data['centerGong']['八字'] = str(self.scbz.string.strip())
 
 
