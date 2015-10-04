@@ -117,6 +117,7 @@ class Pan(object):
         return separator
 
     def initData(self):
+        self.scbz = self.page.find_all(text=re.compile(u'造：'))[0]
         self.whatsthis = self.page.find_all('font', color='#000099')
         self.blueStars = self.page.find_all('font', color='#000099')
         self.allbars = self.page.find_all(text=re.compile(u'├─────────┤'))
@@ -658,11 +659,11 @@ class Pan(object):
         self.setPanLei()
 
     def setSCBZ(self):
-        scbz = self.page.find_all(text=re.compile(u'造：'))[0]
+        
+        logging.info(self.scbz.string)
+        self.scbz = self.scbz.next_sibling
         logging.info(scbz.string)
-        scbz = scbz.next_sibling
-        logging.info(scbz.string)
-        self.data['centerGong']['八字'] = str(scbz.string.strip())
+        self.data['centerGong']['八字'] = str(self.scbz.string.strip())
 
 
     def setJu(self):
