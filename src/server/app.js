@@ -44,7 +44,7 @@ var searchPanRenderPage = function(inputs, res, origInputs) {
                 // if (isIdentical(nextInputs, origInputs)) {
                 //     res.render('notFound');
                 // }
-                searchPanRenderPage(previousInputs, res, origD);
+                searchPanRenderPage(previousInputs, res, origInputs);
             }
             else { // found
                 foundItemAndRender(item, origInputs, res);
