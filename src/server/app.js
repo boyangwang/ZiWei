@@ -148,13 +148,7 @@ var replaceWithOrigInputs = function(item, origInputs) {
             亥时 21:00-22:59
           </option>
     */
-    var map = {
-        0: '', 2: '子',4: '丑',6: '寅',8: '卯',10: '辰',12: '巳',14: '午',16: '未',18: '申',20: '酉',22: '戌', 24: '亥'
-    }
-    for (var i=0; i<=22; i+=2) {
-        var incremented = i + 2;
-        map[i] = map[incremented];
-    }
+
     console.log(map);
     var solar = item['data']['centerGong']['阳历生日'];
     var lunar = item['data']['centerGong']['阴历生日'];
@@ -167,41 +161,57 @@ var replaceWithOrigInputs = function(item, origInputs) {
 
     // lunar = changeMonth(lunar, origInputs);
     // lunar = changeDay(lunar, origInputs);
+    lunar = changeLunarHour(lunar, origInputs);
     //TODO lunar hour
-    // item['data']['centerGong']['阴历生日'] = lunar;
+    item['data']['centerGong']['阴历生日'] = lunar;
     return item;
+}
+
+var changeLunarHour = function(old, inputs) {
+    var map = {
+        0: '', 2: '子',4: '丑',6: '寅',8: '卯',10: '辰',12: '巳',14: '午',16: '未',18: '申',20: '酉',22: '戌', 24: '亥'
+    }
+    for (var i=0; i<=22; i+=2) {
+        var incremented = i + 2;
+        map[i] = map[incremented];
+    }
+    var lunarHourString = map[inputs.h];
+    var idx = old.indexOf('时');
+    var idx2 = old.indexOf('日');
+
+    var newString = old.substring(0, idx2+1) + lunarHourString + old.substring(idx);
+    return newString;
 }
 
 var changeYear = function(old, inputs) {
     var idx = old.indexOf('年');
     var str = '' + inputs.y;
-    old[idx - 1] = str[str.length - 1];
-    old[idx - 2] = str[str.length - 2];
-    old[idx - 3] = str[str.length - 3];
-    old[idx - 4] = str[str.length - 4];
-    return old;
+    var newString = str + old.substring(4);
+
+    return newString;
 }
 
 var changeMonth = function(old, inputs) {
     var idx = old.indexOf('月');
+    var idx2 = old.indexOf('年');
     var str = '' + inputs.m;
     if (str.length == 1) {
         str = '0' + str;
     }
-    old[idx - 1] = str[str.length - 1];
-    old[idx - 2] = str[str.length - 2];
-    return old;
+    var newString = old.substring(0, idx2+1) + str + old.substring(idx);
+    return newString;
 }
 
 var changeDay = function(old, inputs) {
     var idx = old.indexOf('日');
+    var idx2 = old.indexOf('月');
+
     var str = '' + inputs.d;
     if (str.length == 1) {
         str = '0' + str;
     }
-    old[idx - 1] = str[str.length - 1];
-    old[idx - 2] = str[str.length - 2];
-    return old;
+    var newString = old.substring(0, idx2+1) + str + old.substring(idx);
+    return newString;
 }
 
 var changeHour = function(old, inputs) {
@@ -210,7 +220,7 @@ var changeHour = function(old, inputs) {
     if (str.length == 1) {
         str = '0' + str;
     }
-    var former = old.substring(1, old.indexOf('日') + 1);
+    var former = old.substring(0, old.indexOf('日') + 1);
     var latter = old.substring(idx);;
     old = former + str + latter
     return old;
