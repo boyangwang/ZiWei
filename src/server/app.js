@@ -108,7 +108,6 @@ var getNameFromInputs = function(inputs) {
     return name;
 }
 
-//TODO
 var replaceWithOrigInputs = function(item, origInputs) {
     // 公历:1930年01月01日0时生
     // 农历:己巳年12月02日子时生
