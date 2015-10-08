@@ -149,7 +149,6 @@ var replaceWithOrigInputs = function(item, origInputs) {
           </option>
     */
 
-    console.log(map);
     var solar = item['data']['centerGong']['阳历生日'];
     var lunar = item['data']['centerGong']['阴历生日'];
 
