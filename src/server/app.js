@@ -111,7 +111,51 @@ var getNameFromInputs = function(inputs) {
 var replaceWithOrigInputs = function(item, origInputs) {
     // 公历:1930年01月01日0时生
     // 农历:己巳年12月02日子时生
-    
+    /*    <option value="0" id="ljms_OPTION_20">
+            子时 23:00-0:59
+          </option>
+          <option value=2 id="ljms_OPTION_22">
+            丑时 1:00-2:59
+          </option>
+          <option value=4 id="ljms_OPTION_24">
+            寅时 3:00-4:59
+          </option>
+          <option value=6 id="ljms_OPTION_26">
+            卯时 5:00-6:59
+          </option>
+          <option value=8 id="ljms_OPTION_28">
+            辰时 7:00-8:59
+          </option>
+          <option value=10 id="ljms_OPTION_30">
+            巳时 9:00-10:59
+          </option>
+          <option value=12 id="ljms_OPTION_32">
+            午时 11:00-12:59
+          </option>
+          <option value=14 id="ljms_OPTION_34">
+            未时 13:00-14:59
+          </option>
+          <option value=16 id="ljms_OPTION_36">
+            申时 15:00-16:59
+          </option>
+          <option value=18 id="ljms_OPTION_38">
+            酉时 17:00-18:59
+          </option>
+          <option value=20 id="ljms_OPTION_40">
+            戌时 19:00-20:59
+          </option>
+          <option value=22 id="ljms_OPTION_42">
+            亥时 21:00-22:59
+          </option>
+    */
+    var map = {
+        0: '', 2: '子',4: '丑',6: '寅',8: '卯',10: '辰',12: '巳',14: '午',16: '未',18: '申',20: '酉',22: '戌', 24: '亥'
+    }
+    for (var i=0; i<=22; i+=2) {
+        var incremented = i + 2;
+        map[i] = map[incremented];
+    }
+    console.log(map);
     var solar = item['data']['centerGong']['阳历生日'];
     var lunar = item['data']['centerGong']['阴历生日'];
 
