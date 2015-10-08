@@ -29,35 +29,148 @@ var handlePostZiWeiPan = function(app, req, res) {
 	// retrieve pan object, or it doesn't exist
 	var inputs = req.body;
     console.log(inputs);
-    searchPanRenderPage(inputs, res, inputs['d']);	
+    searchPanRenderPage(inputs, res, inputs);	
 }
 
-var searchPanRenderPage = function(inputs, res, origD) {
-    var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
+var searchPanRenderPage = function(inputs, res, origInputs) {
+    // generated name string from currentInputs
+    var name = getNameFromInputs(inputs);
     console.log('name: ', name);
     GLOBAL.Db.collection('zhycw', function(err, collection) {
         collection.findOne({'name': name}, function(err, item) {
-            if (item == null) {
-                inputs['d'] = (parseInt(inputs['d']) + 1) % 28 + 1;
-                if (origD == inputs['d']) {
-                    res.render('notFound');
-                }
-                else {
-                    searchPanRenderPage(inputs, res, origD);    
-                }
+
+            if (item == null) { // not found
+                previousInputs = forgePreviousInputs(inputs);
+                // if (isIdentical(nextInputs, origInputs)) {
+                //     res.render('notFound');
+                // }
+                searchPanRenderPage(previousInputs, res, origD);
             }
-            else {
-                item.starList = starList;           
-                item.starExplanation = GLOBAL.starExplanation;
-                item.data.inputs.name = inputs.name;
-                console.log(item);
-
-                item = replaceWithOrigD(item, origD);
-
-                res.render('ZiWeiPan', item);
+            else { // found
+                foundItemAndRender(item, origInputs, res);
             }
         });
     });
+}
+
+var forgePreviousInputs = function(inputs) {
+    var prev = {};
+    prev = completeCopy(inputs);
+    if (prev.h != 0) {
+        prev.h = prev.h - 2;
+        return prev;
+    }
+    prev.h = 22;
+    if (prev.d != 1) {
+        prev.d = prev.d - 1;
+        return prev;
+    }
+    prev.d = 28;
+    if (prev.m != 1) {
+        prev.m = prev.m - 1;
+        return prev;
+    }
+    prev.m = 12;
+    prev.y = prev.y - 1;
+    return prev;
+}
+
+var completeCopy = function(inputs) {
+    var obj = {};
+    obj.y = inputs.y;
+    obj.m = inputs.m;
+    obj.d = inputs.d;
+    obj.h = inputs.h;
+
+    obj.sex = inputs.sex;
+    obj.mode = inputs.mode;
+    return obj;
+}
+
+var isIdentical = function(inputsA, inputsB) {
+
+}
+
+var foundItemAndRender = function(item, origInputs, res) {
+    item.starList = starList;           
+    item.starExplanation = GLOBAL.starExplanation;
+    item.data.inputs.name = origInputs.name;
+
+    item = replaceWithOrigInputs(item, origInputs);
+
+    console.log(item);
+    res.render('ZiWeiPan', item);
+}
+
+
+var getNameFromInputs = function(inputs) {
+    var name = ['y', (inputs['y']).toString(), 'm', (inputs['m']).toString(), 'd', (inputs['d']).toString(), 'h', (inputs['h']).toString(), 'sex', (inputs['sex']).toString(), 'mode', (inputs['mode']).toString()].join('-') + '.json';
+    return name;
+}
+
+//TODO
+var replaceWithOrigInputs = function(item, origInputs) {
+    // 公历:1930年01月01日0时生
+    // 农历:己巳年12月02日子时生
+    
+    var solar = item['data']['centerGong']['阳历生日'];
+    var lunar = item['data']['centerGong']['阴历生日'];
+
+    solar = changeYear(solar, origInputs);
+    solar = changeMonth(solar, origInputs);
+    solar = changeDay(solar, origInputs);
+    solar = changeHour(solar, origInputs);
+    item['data']['centerGong']['阳历生日'] = solar;
+
+    // lunar = changeMonth(lunar, origInputs);
+    // lunar = changeDay(lunar, origInputs);
+    //TODO lunar hour
+    // item['data']['centerGong']['阴历生日'] = lunar;
+    return item;
+}
+
+var changeYear = function(old, inputs) {
+    var idx = old.indexOf('年');
+    var str = '' + inputs.y;
+    old[idx - 1] = str[str.length - 1];
+    old[idx - 2] = str[str.length - 2];
+    old[idx - 3] = str[str.length - 3];
+    old[idx - 4] = str[str.length - 4];
+    return old;
+}
+
+var changeMonth = function(old, inputs) {
+    var idx = old.indexOf('月');
+    var str = '' + inputs.m;
+    if (str.length == 1) {
+        str = '0' + str;
+    }
+    old[idx - 1] = str[str.length - 1];
+    old[idx - 2] = str[str.length - 2];
+    return old;
+}
+
+var changeDay = function(old, inputs) {
+    var idx = old.indexOf('日');
+    var str = '' + inputs.d;
+    if (str.length == 1) {
+        str = '0' + str;
+    }
+    old[idx - 1] = str[str.length - 1];
+    old[idx - 2] = str[str.length - 2];
+    return old;
+}
+
+var changeHour = function(old, inputs) {
+    var idx = old.indexOf('时');
+    var str = '' + inputs.h;
+    if (str.length == 1) {
+        str = '0' + str;
+    }
+    var former = old.substring(1, old.indexOf('日') + 1);
+    var latter = old.substring(idx);;
+    old = former + str + latter
+    return old;
 }
 
 var replaceWithOrigD = function(item, origD) {
