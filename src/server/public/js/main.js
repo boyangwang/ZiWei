@@ -1,7 +1,7 @@
 $( ".datepicker" ).datepicker({
 	dateFormat: "yy-mm-dd",
 	minDate: '1930-01-01',
-	maxDate: '2020-01-01',
+	maxDate: '2020-12-31',
 	showButtonPanel: true,
 	changeMonth: true,
 	changeYear: true,
