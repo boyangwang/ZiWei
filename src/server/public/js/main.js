@@ -1,13 +1,13 @@
 $( ".datepicker" ).datepicker({
 	dateFormat: "yy-mm-dd",
 	minDate: '1930-01-01',
-	maxDate: '2020-12-31',
+	maxDate: '2014-12-31',
 	showButtonPanel: true,
 	changeMonth: true,
 	changeYear: true,
 	constrainInput: true,
 	defaultDate: '1970-01-01',
-	yearRange: '1930:2020'
+	yearRange: '1930:2014'
 });
 console.log('datepicker init done');
 var Lifesub = function(a) {
